@@ -1,6 +1,8 @@
 import logging
 import traceback
 
+import requests
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -43,7 +45,8 @@ if __name__ == '__main__':
 
             for l in links:
                 try:
-                    profile = profile_scrape.parse_profile_page(l)
+                    r = requests.get(l)
+                    profile = profile_scrape.parse_profile_page(l, r.text)
                     #profile_scrape.download_photos(profile, photos_path)
 
                     db_session.add(profile)

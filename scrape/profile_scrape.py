@@ -283,9 +283,8 @@ def get_height_cm(feet_inches_str):
     return int(int(feet) * 30.48 + int(inches[:-1]) * 2.54)
 
 
-def parse_profile_page(url):
-    r = requests.get(url)
-    tree = BeautifulSoup(r.text, 'html.parser')
+def parse_profile_page(url, page_html):
+    tree = BeautifulSoup(page_html, 'html.parser')
     sections = tree.select('#wrapper div.maincontainer main section.sectionspace')
     if not sections:
         raise ValueError('Account deleted or not activated')
@@ -296,32 +295,42 @@ def parse_profile_page(url):
 
     second_values = [dt.text for boxes in tree.select('div.whitelinebox.responsive_block')[2:] for dt in boxes.select('dt')]
 
-    profile = date_profile.Profile()
-    profile.url = url
-    profile.gender = values[0]
-    profile.country = values[1]
-    profile.city = values[2]
-    profile.state = values[3]
-    profile.height_cm = get_height_cm(values[4])
-    profile.age = int(values[6])
-    profile.eye_color = values[7]
-    profile.body_type = values[8]
-    profile.hair_color = values[9]
-    profile.ethnicity = values[10]
-    profile.denomination = values[11]
-    profile.photo_urls = '|'.join([img['src'] for img in tree.select('div.tooltip-img img')])
-    profile.looking_for = second_values[0]
-    profile.church_name = second_values[1]
-    profile.church_attendance = second_values[2]
-    profile.church_raised_in = second_values[3]
-    profile.drink = second_values[4]
-    profile.smoke = second_values[5]
-    profile.willing_to_relocate = second_values[6]
-    profile.marital_status = second_values[7]
-    profile.have_children = second_values[8] == 'Yes'
-    profile.want_children = second_values[9]
-    profile.education_level = second_values[10]
-    profile.profession = second_values[11]
+    additional_texts = [dd.text.strip() for dd in tree.select('.whitelinebox2.responsive_block.clearfix dd')]
+    interests = additional_texts[0] if additional_texts[0] != '' else None
+    about_me = additional_texts[1] if additional_texts[1] != '' else None
+    first_date = additional_texts[2] if additional_texts[2] != '' else None
+    account_settings_criteria = additional_texts[3] if additional_texts[3] != '' else None
+
+    profile = date_profile.Profile(
+        url = url,
+        gender = values[0],
+        country = values[1],
+        city = values[2],
+        state = values[3],
+        height_cm = get_height_cm(values[4]),
+        age = int(values[6]),
+        eye_color = values[7],
+        body_type = values[8],
+        hair_color = values[9],
+        ethnicity = values[10],
+        denomination = values[11],
+        photo_urls = '|'.join([img['src'] for img in tree.select('div.tooltip-img img')]),
+        looking_for = second_values[0],
+        church_name = second_values[1],
+        church_attendance = second_values[2],
+        church_raised_in = second_values[3],
+        drink = second_values[4],
+        smoke = second_values[5],
+        willing_to_relocate = second_values[6],
+        marital_status = second_values[7],
+        have_children = second_values[8],
+        want_children = second_values[9],
+        education_level = second_values[10],
+        profession = second_values[11],
+        interests=interests,
+        about_me=about_me,
+        first_date=first_date,
+        account_settings_criteria=account_settings_criteria)
 
     return profile
 
