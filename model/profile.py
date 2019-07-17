@@ -5,7 +5,7 @@ from model.entity_base import Base
 
 class Profile(Base):
 
-    __tablename__ = 'profiles'
+    __tablename__ = 'new_profiles'
 
     id = Column(Integer, primary_key=True)
     url = Column(Text)
