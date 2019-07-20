@@ -2,13 +2,14 @@ import logging
 import time
 
 from requests_futures.sessions import FuturesSession
+from requests import Session
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
 from model.entity_base import Base
-
 from scrape import profile_scrape
+from scrape.cookies import CookieJarBlockPolicy
 
 
 logging.basicConfig(filename='scrape.log',
@@ -50,10 +51,11 @@ def main():
     DbSession = sessionmaker(bind=engine)
     db_session = DbSession()
 
-    photos_path = 'photos/'
-
     users_per_batch = 12
-    sess = FuturesSession(max_workers=users_per_batch + 1)
+
+    session = Session()
+    session.cookies.set_policy(CookieJarBlockPolicy())
+    session = FuturesSession(session=session, max_workers=users_per_batch + 1)
 
     url_params = {
         'age_from': 18,
@@ -63,7 +65,7 @@ def main():
         'u_country': 0
     }
 
-    search_response = sess.get(build_url('https://www.christiandatingforfree.com/basic_search.php', url_params))
+    search_response = session.get(build_url('https://www.christiandatingforfree.com/basic_search.php', url_params))
 
     url_params['start'] = 0
 
@@ -74,15 +76,20 @@ def main():
         print('Processing page', page_no)
 
         links = profile_scrape.get_profile_links(search_response.result().text)
-        futures = [sess.get(l) for l in links]
+        if not links:
+            # no links found on the page means we have gone to the end of the results, leave the loop
+            break
+
+        futures = [session.get(l) for l in links]
 
         url_params['start'] += RESULTS_PER_PAGE
-        search_response = sess.get(build_url('https://www.christiandatingforfree.com/basic_search.php', url_params))
-
-        #profile_scrape.download_photos(profile, photos_path)
+        search_response = session.get(build_url('https://www.christiandatingforfree.com/basic_search.php', url_params))
 
         for f in futures:
             try:
+                # wait a 100 ms, so the firewall doesn't catch us
+                time.sleep(0.1)
+
                 r = f.result()
                 db_session.add(profile_scrape.parse_profile_page(r.url, r.text))
                 total_users_processed += 1
@@ -94,8 +101,8 @@ def main():
 
         db_session.commit()
         print('Users processed till now:', total_users_processed)
-        time.sleep(2)
 
+    print('Done')
     logging.shutdown()
 
 

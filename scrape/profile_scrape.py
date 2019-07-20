@@ -1,9 +1,9 @@
-import os
-
 from bs4 import BeautifulSoup
 import requests
 
-import model.profile as date_profile
+import scrape.utils as utils
+
+from model.profile import *
 
 
 def get_height_cm(feet_inches_str):
@@ -33,31 +33,31 @@ def parse_profile_page(url, page_html):
     first_date = additional_texts[2] if additional_texts[2] != '' else None
     account_settings_criteria = additional_texts[3] if additional_texts[3] != '' else None
 
-    profile = date_profile.Profile(
+    profile = Profile(
         url=url,
-        gender=values[0],
+        gender=utils.get_gender(values[0]),
         country=values[1],
         city=values[2],
         state=values[3],
         height_cm=get_height_cm(values[4]),
         age=int(values[6]),
-        eye_color=values[7],
-        body_type=values[8],
-        hair_color=values[9],
-        ethnicity=values[10],
-        denomination=values[11],
+        eye_color=utils.get_eye_color(values[7]),
+        body_type=utils.get_body_type(values[8]),
+        hair_color=utils.get_hair_color(values[9]),
+        ethnicity=utils.get_ethnicity(values[10]),
+        denomination=utils.get_denomination(values[11]),
         photo_urls='|'.join([img['src'] for img in tree.select('div.tooltip-img img')]),
-        looking_for=second_values[0],
+        looking_for=utils.get_looking_for(second_values[0]),
         church_name=second_values[1],
-        church_attendance=second_values[2],
+        church_attendance=utils.get_church_attendance(second_values[2]),
         church_raised_in=second_values[3],
-        drink=second_values[4],
-        smoke=second_values[5],
-        willing_to_relocate=second_values[6],
-        marital_status=second_values[7],
-        have_children=second_values[8],
-        want_children=second_values[9],
-        education_level=second_values[10],
+        drink=utils.get_drink(second_values[4]),
+        smoke=utils.get_smoke(second_values[5]),
+        willing_to_relocate=utils.get_willing_to_relocate(second_values[6]),
+        marital_status=utils.get_marital_status(second_values[7]),
+        have_children=utils.get_user_with_children(second_values[8]),
+        want_children=utils.get_user_wants_children(second_values[9]),
+        education_level=utils.get_education_level(second_values[10]),
         profession=second_values[11],
         interests=interests,
         about_me=about_me,
@@ -65,22 +65,6 @@ def parse_profile_page(url, page_html):
         account_settings_criteria=account_settings_criteria)
 
     return profile
-
-
-def download_photos(profile, path):
-
-    if not profile.photo_urls:
-        return
-
-    if not os.path.exists(path):
-        os.mkdir(path)
-
-    for url in profile.photo_urls.split('|'):
-        r = requests.get(url)
-        file_path = 'photos/' + url.split('/')[-1]
-        if not os.path.isfile(file_path):
-            with open(file_path, mode='w+b') as f:
-                f.write(r.content)
 
 
 def get_profile_links(result_page_html):
