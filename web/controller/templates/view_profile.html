@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>View profile</title>
+
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+         crossorigin="anonymous">
+
+</head>
+<body>
+
+<div class="container">
+
+   {% for ph in profile.photo_urls_list %}
+   <img src="{{ph}}">
+   {% endfor %}
+
+   <form>
+      <div class="form-group">
+         <label>Url</label>
+         <input type="text" class="form-control" value="{{profile.url}}">
+      </div>
+
+      <div class="row">
+         <div class="col">
+            <label>Gender</label>
+            <input type="text" class="form-control" value="{{profile.gender.name}}">
+         </div>
+         <div class="col">
+            <label>Country</label>
+            <input type="text" class="form-control" value="{{profile.country}}">
+         </div>
+
+         <div class="col">
+            <label>city</label>
+            <input type="text" class="form-control" value="{{profile.city}}">
+         </div>
+
+         <div class="col">
+            <label>state</label>
+            <input type="text" class="form-control" value="{{profile.state}}">
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col">
+            <label>age</label>
+            <input type="text" class="form-control" value="{{profile.age}}">
+         </div>
+         <div class="col">
+            <label>height_cm</label>
+            <input type="text" class="form-control" value="{{profile.height_cm}}">
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col">
+            <label>looking_for</label>
+            <input type="text" class="form-control" value="{{profile.looking_for.name}}">
+         </div>
+
+         <div class="col">
+            <label>church_attendance</label>
+            <input type="text" class="form-control" value="{{profile.church_attendance.name}}">
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col">
+            <label>body_type</label>
+            <input type="text" class="form-control" value="{{profile.body_type.name}}">
+         </div>
+
+         <div class="col">
+            <label>eye_color</label>
+            <input type="text" class="form-control" value="{{profile.eye_color.name}}">
+         </div>
+
+         <div class="col">
+            <label>hair_color</label>
+            <input type="text" class="form-control" value="{{profile.hair_color.name}}">
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col">
+            <label>ethnicity</label>
+            <input type="text" class="form-control" value="{{profile.ethnicity.name}}">
+         </div>
+
+         <div class="col">
+            <label>denomination</label>
+            <input type="text" class="form-control" value="{{profile.denomination.name}}">
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col">
+            <label>church_name</label>
+            <input type="text" class="form-control" value="{{profile.church_name}}">
+         </div>
+
+         <div class="col">
+            <label>church_raised_in</label>
+            <input type="text" class="form-control" value="{{profile.church_raised_in}}">
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col">
+            <label>drink</label>
+            <input type="text" class="form-control" value="{{profile.drink.name}}">
+         </div>
+
+         <div class="col">
+            <label>smoke</label>
+            <input type="text" class="form-control" value="{{profile.smoke.name}}">
+         </div>
+      </div>
+
+      <div class="form-group">
+         <label>willing_to_relocate</label>
+         <input type="text" class="form-control" value="{{profile.willing_to_relocate.name}}">
+      </div>
+
+      <div class="row">
+
+         <div class="col">
+            <label>marital_status</label>
+            <input type="text" class="form-control" value="{{profile.marital_status.name}}">
+         </div>
+
+         <div class="col">
+            <label>have_children</label>
+            <input type="text" class="form-control" value="{{profile.have_children.name}}">
+         </div>
+
+         <div class="col">
+            <label>want_children</label>
+            <input type="text" class="form-control" value="{{profile.want_children.name}}">
+         </div>
+      </div>
+
+      <div class="row">
+         <div class="col">
+            <label>education_level</label>
+            <input type="text" class="form-control" value="{{profile.education_level.name}}">
+         </div>
+
+         <div class="col">
+            <label>profession</label>
+            <input type="text" class="form-control" value="{{profile.profession}}">
+         </div>
+      </div>
+
+      <div class="form-group">
+         <label>interests</label>
+         <textarea type="text" class="form-control">{{profile.interests}}</textarea>
+      </div>
+
+      <div class="form-group">
+         <label>about_me</label>
+         <textarea type="text" class="form-control">{{profile.about_me}}</textarea>
+      </div>
+
+      <div class="form-group">
+         <label>first_date</label>
+         <textarea type="text" class="form-control">{{profile.first_date}}</textarea>
+      </div>
+
+      <div class="form-group">
+         <label>account_settings_criteria</label>
+         <textarea type="text" class="form-control">{{profile.account_settings_criteria}}</textarea>
+      </div>
+
+   </form>
+</div>
+
+</body>
+</html>

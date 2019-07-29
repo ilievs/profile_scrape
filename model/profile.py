@@ -5,181 +5,181 @@ from sqlalchemy import Column, Integer, Text, Enum
 from model.entity_base import Base
 
 
-class Gender(enum.Enum):
-    male = 1
-    female = 2
-    undefined = 3
+class Gender(str, enum.Enum):
+    male = 'male'
+    female = 'female'
+    undefined = 'undefined'
 
 
-class LookingFor(enum.Enum):
-    friend = 1
-    activityPartner = 2
-    worshipPartner = 3
-    date = 4
-    talkEmailBuddy = 5
-    longTermRelationship = 6
-    marriagePartner = 7
-    Anything = 8
-    undefined = 9
+class LookingFor(str, enum.Enum):
+    friend = 'friend'
+    activityPartner = 'activityPartner'
+    worshipPartner = 'worshipPartner'
+    date = 'date'
+    talkEmailBuddy = 'talkEmailBuddy'
+    longTermRelationship = 'longTermRelationship'
+    marriagePartner = 'marriagePartner'
+    Anything = 'anything'
+    undefined = 'undefined'
 
 
-class ChurchAttendance(enum.Enum):
-    onSpecialOccasion = 1
-    severalTimesAYear = 2
-    onceOrTwiceAMonth = 3
-    everyWeek = 4
-    noAnswer = 5
-    undefined = 6
+class ChurchAttendance(str, enum.Enum):
+    onSpecialOccasion = 'onSpecialOccasion'
+    severalTimesAYear = 'severalTimesAYear'
+    onceOrTwiceAMonth = 'onceOrTwiceAMonth'
+    everyWeek = 'everyWeek'
+    noAnswer = 'noAnswer'
+    undefined = 'undefined'
 
 
-class Drink(enum.Enum):
-    no = 1
-    oneOrTwoOnOccasion = 2
-    socially = 3
-    oftenIeMoreThanThreeTimesAWeek = 4
-    undefined = 5
+class Drink(str, enum.Enum):
+    no = 'no'
+    oneOrTwoOnOccasion = 'oneOrTwoOnOccasion'
+    socially = 'socially'
+    oftenIeMoreThanThreeTimesAWeek = 'oftenIeMoreThanThreeTimesAWeek'
+    undefined = 'undefined'
 
 
-class Smoke(enum.Enum):
-    no = 1
-    occasionally = 2
-    often = 3
-    undefined = 4
+class Smoke(str, enum.Enum):
+    no = 'no'
+    occasionally = 'occasionally'
+    often = 'often'
+    undefined = 'undefined'
 
 
-class BodyType(enum.Enum):
-    slender = 1
-    athletic = 2
-    average = 3
-    aFewExtraPounds = 4
-    bigAndTallBBW = 5
-    muscular = 6
-    voluptuous = 7
-    petite = 8
-    wellProportioned = 9
-    thick = 10
-    bigGuy = 11
-    curvyCurvaceous = 12
-    fullFigured = 13
-    undefined = 14
+class BodyType(str, enum.Enum):
+    slender = 'slender'
+    athletic = 'athletic'
+    average = 'average'
+    aFewExtraPounds = 'aFewExtraPounds'
+    bigAndTallBBW = 'bigAndTallBBW'
+    muscular = 'muscular'
+    voluptuous = 'voluptuous'
+    petite = 'petite'
+    wellProportioned = 'wellProportioned'
+    thick = 'thick'
+    bigGuy = 'bigGuy'
+    curvyCurvaceous = 'curvyCurvaceous'
+    fullFigured = 'fullFigured'
+    undefined = 'undefined'
 
 
-class Denomination(enum.Enum):
-    seventhDayAdventist = 1
-    anglican = 2
-    apostolicAssemblyOfGod = 3
-    baptist = 4
-    catholic = 5
-    charismatic = 6
-    christianReformed = 7
-    churchOfChrist = 8
-    churchOfGod = 9
-    episcopalian = 10
-    evangelical = 11
-    interdenominational = 12
-    lutheran = 13
-    mennonite = 14
-    messianic = 15
-    methodist = 16
-    missionaryAlliance = 17
-    nazarene = 18
-    nonDenominational = 19
-    notSureYet = 20
-    orthodox = 21
-    pentecostal = 22
-    presbyterian = 23
-    protestant = 24
-    reformed = 25
-    southernBaptist = 26
-    united = 27
-    unitedPentecostalChurch = 28
-    other = 29
-    undefined = 30
+class Denomination(str, enum.Enum):
+    seventhDayAdventist = 'seventhDayAdventist'
+    anglican = 'anglican'
+    apostolicAssemblyOfGod = 'apostolicAssemblyOfGod'
+    baptist = 'baptist'
+    catholic = 'catholic'
+    charismatic = 'charismatic'
+    christianReformed = 'christianReformed'
+    churchOfChrist = 'churchOfChrist'
+    churchOfGod = 'churchOfGod'
+    episcopalian = 'episcopalian'
+    evangelical = 'evangelical'
+    interdenominational = 'interdenominational'
+    lutheran = 'lutheran'
+    mennonite = 'mennonite'
+    messianic = 'messianic'
+    methodist = 'methodist'
+    missionaryAlliance = 'missionaryAlliance'
+    nazarene = 'nazarene'
+    nonDenominational = 'nonDenominational'
+    notSureYet = 'notSureYet'
+    orthodox = 'orthodox'
+    pentecostal = 'pentecostal'
+    presbyterian = 'presbyterian'
+    protestant = 'protestant'
+    reformed = 'reformed'
+    southernBaptist = 'southernBaptist'
+    united = 'united'
+    unitedPentecostalChurch = 'unitedPentecostalChurch'
+    other = 'other'
+    undefined = 'undefined'
 
 
-class EducationLevel(enum.Enum):
-    someSchool = 1
-    GED = 2
-    highSchoolGraduate = 3
-    specialtyTradeSchool = 4
-    someCollege = 5
-    twoYearCollegeDegree = 6
-    fourYearCollegeDegree = 7
-    mastersPostGrad = 8
-    phDDoctorate = 9
-    undefined = 10
+class EducationLevel(str, enum.Enum):
+    someSchool = 'someSchool'
+    GED = 'GED'
+    highSchoolGraduate = 'highSchoolGraduate'
+    specialtyTradeSchool = 'specialtyTradeSchool'
+    someCollege = 'someCollege'
+    twoYearCollegeDegree = 'twoYearCollegeDegree'
+    fourYearCollegeDegree = 'fourYearCollegeDegree'
+    mastersPostGrad = 'mastersPostGrad'
+    phDDoctorate = 'phDDoctorate'
+    undefined = 'undefined'
 
 
-class MaritalStatus(enum.Enum):
-    single = 1
-    divorced = 2
-    separated = 3
-    widowed = 4
-    undefined = 5
+class MaritalStatus(str, enum.Enum):
+    single = 'single'
+    divorced = 'divorced'
+    separated = 'separated'
+    widowed = 'widowed'
+    undefined = 'undefined'
 
 
-class Ethnicity(enum.Enum):
-    africanAmerican = 1
-    caucasian = 2
-    european = 3
-    hispanic = 4
-    indian = 5
-    middleEastern = 6
-    african = 7
-    nativeAmericanIndian = 8
-    asian = 9
-    pacificIslander = 10
-    caribbean = 11
-    mixedRace = 12
-    black = 13
-    other = 14
-    undefined = 15
+class Ethnicity(str, enum.Enum):
+    africanAmerican = 'africanAmerican'
+    caucasian = 'caucasian'
+    european = 'european'
+    hispanic = 'hispanic'
+    indian = 'indian'
+    middleEastern = 'middleEastern'
+    african = 'african'
+    nativeAmericanIndian = 'nativeAmericanIndian'
+    asian = 'asian'
+    pacificIslander = 'pacificIslander'
+    caribbean = 'caribbean'
+    mixedRace = 'mixedRace'
+    black = 'black'
+    other = 'other'
+    undefined = 'undefined'
 
 
-class HairColor(enum.Enum):
-    black = 1
-    blonde = 2
-    brown = 3
-    red = 4
-    grey = 5
-    white = 6
-    silver = 7
-    saltAndPepper = 8
-    bald = 9
-    mixed = 10
-    undefined = 11
+class HairColor(str, enum.Enum):
+    black = 'black'
+    blonde = 'blonde'
+    brown = 'brown'
+    red = 'red'
+    grey = 'grey'
+    white = 'white'
+    silver = 'silver'
+    saltAndPepper = 'saltAndPepper'
+    bald = 'bald'
+    mixed = 'mixed'
+    undefined = 'undefined'
 
 
-class EyeColor(enum.Enum):
-    brown = 1
-    blue = 2
-    green = 3
-    hazel = 4
-    black = 5
-    grey = 6
-    undefined = 7
+class EyeColor(str, enum.Enum):
+    brown = 'brown'
+    blue = 'blue'
+    green = 'green'
+    hazel = 'hazel'
+    black = 'black'
+    grey = 'grey'
+    undefined = 'undefined'
 
 
-class UserWantsChildren(enum.Enum):
-    wantChildren = 1
-    doesNotWantChildren = 2
-    undecidedOpen = 3
-    undefined = 4
+class UserWantsChildren(str, enum.Enum):
+    wantChildren = 'wantChildren'
+    doesNotWantChildren = 'doesNotWantChildren'
+    undecidedOpen = 'undecidedOpen'
+    undefined = 'undefined'
 
 
-class UserWithChildren(enum.Enum):
-    yes = 1
-    no = 2
-    yesButTheyAreGrown = 3
-    yesButNotLivingAtHome = 4
-    undefined = 5
+class UserWithChildren(str, enum.Enum):
+    yes = 'yes'
+    no = 'no'
+    yesButTheyAreGrown = 'yesButTheyAreGrown'
+    yesButNotLivingAtHome = 'yesButNotLivingAtHome'
+    undefined = 'undefined'
 
 
-class WillingToRelocate(enum.Enum):
-    noWay = 1
-    sureWhyNot = 2
-    possiblyWhoKnows = 3
-    undefined = 4
+class WillingToRelocate(str, enum.Enum):
+    noWay = 'noWay'
+    sureWhyNot = 'sureWhyNot'
+    possiblyWhoKnows = 'possiblyWhoKnows'
+    undefined = 'undefined'
 
 
 class Profile(Base):
