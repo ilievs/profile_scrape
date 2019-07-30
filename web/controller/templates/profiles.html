@@ -8,6 +8,16 @@
          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
          crossorigin="anonymous">
 
+   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+           integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+           crossorigin="anonymous"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+           integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+           crossorigin="anonymous"></script>
+   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+           integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+           crossorigin="anonymous"></script>
+
    <script>
       function clearForm() {
          document.getElementById('search_form').reset();
@@ -151,7 +161,18 @@
       window.onload = function() {
          setFormValues();
       }
+
+
+
    </script>
+
+   <style>
+      .btn-block {
+         text-align: left;
+      }
+
+
+   </style>
 </head>
 
 <body>
@@ -161,504 +182,639 @@
    <hr class="my-4">
    <div class="container">
 
-      <form id="search_form" action="profiles">
-         <div class="row">
-            <div class="col">
-               <div class="form-group row">
-                  <label class="col-sm-4 col-form-label">I am Seeking a</label>
-                  <select class="col form-control" name="gender">
-                     <option value="">Select</option>
-                     <option value="female">Female</option>
-                     <option value="male">Male</option>
-                  </select>
-               </div>
-            </div>
-            <div class="col">
-               <div class="form-group row">
-                  <label class="col-sm-2 col-form-label">Country</label>
-                  <select class="col form-control" name="country">
-                     <option value="">All Countries</option>
-                     <option value="United States">United States</option>
-                     <option value="Canada">Canada</option>
-                     <option value="United Kingdom">United Kingdom</option>
-                     <option value="Australia">Australia</option>
-                     <option value="Afghanistan">Afghanistan</option>
-                     <option value="Albania">Albania</option>
-                     <option value="Algeria">Algeria</option>
-                     <option value="American Samoa">American Samoa</option>
-                     <option value="Andorra">Andorra</option>
-                     <option value="Angola">Angola</option>
-                     <option value="Anguilla">Anguilla</option>
-                     <option value="Antarctica">Antarctica</option>
-                     <option value="Antigua and Barbuda">Antigua and Barbuda</option>
-                     <option value="Argentina">Argentina</option>
-                     <option value="Armenia">Armenia</option>
-                     <option value="Aruba">Aruba</option>
-                     <option value="Austria">Austria</option>
-                     <option value="Azerbaijan">Azerbaijan</option>
-                     <option value="Bahamas">Bahamas</option>
-                     <option value="Bahrain">Bahrain</option>
-                     <option value="Bangladesh">Bangladesh</option>
-                     <option value="Barbados">Barbados</option>
-                     <option value="Belarus">Belarus</option>
-                     <option value="Belgium">Belgium</option>
-                     <option value="Belize">Belize</option>
-                     <option value="Benin">Benin</option>
-                     <option value="Bermuda">Bermuda</option>
-                     <option value="Bhutan">Bhutan</option>
-                     <option value="Bolivia">Bolivia</option>
-                     <option value="Bosnia and Herzegowina">Bosnia and Herzegowina</option>
-                     <option value="Botswana">Botswana</option>
-                     <option value="Bouvet Island">Bouvet Island</option>
-                     <option value="Brazil">Brazil</option>
-                     <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
-                     <option value="Brunei Darussalam">Brunei Darussalam</option>
-                     <option value="Bulgaria">Bulgaria</option>
-                     <option value="Burkina Faso">Burkina Faso</option>
-                     <option value="Burundi">Burundi</option>
-                     <option value="Cambodia">Cambodia</option>
-                     <option value="Cameroon">Cameroon</option>
-                     <option value="Cape Verde">Cape Verde</option>
-                     <option value="Cayman Islands">Cayman Islands</option>
-                     <option value="Central African Republic">Central African Republic</option>
-                     <option value="Chad">Chad</option>
-                     <option value="Chile">Chile</option>
-                     <option value="China">China</option>
-                     <option value="Christmas Island">Christmas Island</option>
-                     <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
-                     <option value="Colombia">Colombia</option>
-                     <option value="Comoros">Comoros</option>
-                     <option value="Congo">Congo</option>
-                     <option value="Cook Islands">Cook Islands</option>
-                     <option value="Costa Rica">Costa Rica</option>
-                     <option value="Cote D'Ivoire">Cote D'Ivoire</option>
-                     <option value="Croatia">Croatia</option>
-                     <option value="Cuba">Cuba</option>
-                     <option value="Cyprus">Cyprus</option>
-                     <option value="Czech Republic">Czech Republic</option>
-                     <option value="Denmark">Denmark</option>
-                     <option value="Djibouti">Djibouti</option>
-                     <option value="Dominica">Dominica</option>
-                     <option value="Dominican Republic">Dominican Republic</option>
-                     <option value="East Timor">East Timor</option>
-                     <option value="Ecuador">Ecuador</option>
-                     <option value="Egypt">Egypt</option>
-                     <option value="El Salvador">El Salvador</option>
-                     <option value="Equatorial Guinea">Equatorial Guinea</option>
-                     <option value="Eritrea">Eritrea</option>
-                     <option value="Estonia">Estonia</option>
-                     <option value="Ethiopia">Ethiopia</option>
-                     <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
-                     <option value="Faroe Islands">Faroe Islands</option>
-                     <option value="Fiji">Fiji</option>
-                     <option value="Finland">Finland</option>
-                     <option value="France">France</option>
-                     <option value="France, Metropolitan">France, Metropolitan</option>
-                     <option value="French Guiana">French Guiana</option>
-                     <option value="French Polynesia">French Polynesia</option>
-                     <option value="French Southern Territories">French Southern Territories</option>
-                     <option value="Gabon">Gabon</option>
-                     <option value="Gambia">Gambia</option>
-                     <option value="Georgia">Georgia</option>
-                     <option value="Germany">Germany</option>
-                     <option value="Ghana">Ghana</option>
-                     <option value="Gibraltar">Gibraltar</option>
-                     <option value="Greece">Greece</option>
-                     <option value="Greenland">Greenland</option>
-                     <option value="Grenada">Grenada</option>
-                     <option value="Guadeloupe">Guadeloupe</option>
-                     <option value="Guam">Guam</option>
-                     <option value="Guatemala">Guatemala</option>
-                     <option value="Guinea">Guinea</option>
-                     <option value="Guinea-bissau">Guinea-bissau</option>
-                     <option value="Guyana">Guyana</option>
-                     <option value="Haiti">Haiti</option>
-                     <option value="Heard and Mc Donald Islands">Heard and Mc Donald Islands</option>
-                     <option value="Honduras">Honduras</option>
-                     <option value="Hong Kong">Hong Kong</option>
-                     <option value="Hungary">Hungary</option>
-                     <option value="Iceland">Iceland</option>
-                     <option value="India">India</option>
-                     <option value="Indonesia">Indonesia</option>
-                     <option value="Iran (Islamic Republic of)">Iran (Islamic Republic of)</option>
-                     <option value="Iraq">Iraq</option>
-                     <option value="Ireland">Ireland</option>
-                     <option value="Israel">Israel</option>
-                     <option value="Italy">Italy</option>
-                     <option value="Jamaica">Jamaica</option>
-                     <option value="Japan">Japan</option>
-                     <option value="Jordan">Jordan</option>
-                     <option value="Kazakhstan">Kazakhstan</option>
-                     <option value="Kenya">Kenya</option>
-                     <option value="Kiribati">Kiribati</option>
-                     <option value="Kuwait">Kuwait</option>
-                     <option value="Kyrgyzstan">Kyrgyzstan</option>
-                     <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
-                     <option value="Latvia">Latvia</option>
-                     <option value="Lebanon">Lebanon</option>
-                     <option value="Lesotho">Lesotho</option>
-                     <option value="Liberia">Liberia</option>
-                     <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
-                     <option value="Liechtenstein">Liechtenstein</option>
-                     <option value="Lithuania">Lithuania</option>
-                     <option value="Luxembourg">Luxembourg</option>
-                     <option value="Macau">Macau</option>
-                     <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav Republic of</option>
-                     <option value="Madagascar">Madagascar</option>
-                     <option value="Malawi">Malawi</option>
-                     <option value="Malaysia">Malaysia</option>
-                     <option value="Maldives">Maldives</option>
-                     <option value="Mali">Mali</option>
-                     <option value="Malta">Malta</option>
-                     <option value="Marshall Islands">Marshall Islands</option>
-                     <option value="Martinique">Martinique</option>
-                     <option value="Mauritania">Mauritania</option>
-                     <option value="Mauritius">Mauritius</option>
-                     <option value="Mayotte">Mayotte</option>
-                     <option value="Mexico">Mexico</option>
-                     <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
-                     <option value="Moldova, Republic of">Moldova, Republic of</option>
-                     <option value="Monaco">Monaco</option>
-                     <option value="Mongolia">Mongolia</option>
-                     <option value="Montserrat">Montserrat</option>
-                     <option value="Morocco">Morocco</option>
-                     <option value="Mozambique">Mozambique</option>
-                     <option value="Myanmar">Myanmar</option>
-                     <option value="Namibia">Namibia</option>
-                     <option value="Nauru">Nauru</option>
-                     <option value="Nepal">Nepal</option>
-                     <option value="Netherlands">Netherlands</option>
-                     <option value="Netherlands Antilles">Netherlands Antilles</option>
-                     <option value="New Caledonia">New Caledonia</option>
-                     <option value="New Zealand">New Zealand</option>
-                     <option value="Nicaragua">Nicaragua</option>
-                     <option value="Niger">Niger</option>
-                     <option value="Nigeria">Nigeria</option>
-                     <option value="Niue">Niue</option>
-                     <option value="Norfolk Island">Norfolk Island</option>
-                     <option value="Northern Mariana Islands">Northern Mariana Islands</option>
-                     <option value="Norway">Norway</option>
-                     <option value="Oman">Oman</option>
-                     <option value="Pakistan">Pakistan</option>
-                     <option value="Palau">Palau</option>
-                     <option value="Panama">Panama</option>
-                     <option value="Papua New Guinea">Papua New Guinea</option>
-                     <option value="Paraguay">Paraguay</option>
-                     <option value="Peru">Peru</option>
-                     <option value="Philippines">Philippines</option>
-                     <option value="Pitcairn">Pitcairn</option>
-                     <option value="Poland">Poland</option>
-                     <option value="Portugal">Portugal</option>
-                     <option value="Puerto Rico">Puerto Rico</option>
-                     <option value="Qatar">Qatar</option>
-                     <option value="Reunion">Reunion</option>
-                     <option value="Romania">Romania</option>
-                     <option value="Russian Federation">Russian Federation</option>
-                     <option value="Rwanda">Rwanda</option>
-                     <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
-                     <option value="Saint Lucia">Saint Lucia</option>
-                     <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
-                     <option value="Samoa">Samoa</option>
-                     <option value="San Marino">San Marino</option>
-                     <option value="Sao Tome and Principe">Sao Tome and Principe</option>
-                     <option value="Saudi Arabia">Saudi Arabia</option>
-                     <option value="Senegal">Senegal</option>
-                     <option value="Seychelles">Seychelles</option>
-                     <option value="Sierra Leone">Sierra Leone</option>
-                     <option value="Singapore">Singapore</option>
-                     <option value="Slovakia (Slovak Republic)">Slovakia (Slovak Republic)</option>
-                     <option value="Slovenia">Slovenia</option>
-                     <option value="Solomon Islands">Solomon Islands</option>
-                     <option value="Somalia">Somalia</option>
-                     <option value="South Africa">South Africa</option>
-                     <option value="South Georgia and the South Sandwich Islands">South Georgia and the South Sandwich Islands</option>
-                     <option value="South Korea">South Korea</option>
-                     <option value="Spain">Spain</option>
-                     <option value="Sri Lanka">Sri Lanka</option>
-                     <option value="St. Helena">St. Helena</option>
-                     <option value="St. Pierre and Miquelon">St. Pierre and Miquelon</option>
-                     <option value="Sudan">Sudan</option>
-                     <option value="Suriname">Suriname</option>
-                     <option value="Svalbard and Jan Mayen Islands">Svalbard and Jan Mayen Islands</option>
-                     <option value="Swaziland">Swaziland</option>
-                     <option value="Sweden">Sweden</option>
-                     <option value="Switzerland">Switzerland</option>
-                     <option value="Syrian Arab Republic">Syrian Arab Republic</option>
-                     <option value="Taiwan">Taiwan</option>
-                     <option value="Tajikistan">Tajikistan</option>
-                     <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
-                     <option value="Thailand">Thailand</option>
-                     <option value="Togo">Togo</option>
-                     <option value="Tokelau">Tokelau</option>
-                     <option value="Tonga">Tonga</option>
-                     <option value="Trinidad and Tobago">Trinidad and Tobago</option>
-                     <option value="Tunisia">Tunisia</option>
-                     <option value="Turkey">Turkey</option>
-                     <option value="Turkmenistan">Turkmenistan</option>
-                     <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
-                     <option value="Tuvalu">Tuvalu</option>
-                     <option value="Uganda">Uganda</option>
-                     <option value="Ukraine">Ukraine</option>
-                     <option value="United Arab Emirates">United Arab Emirates</option>
-                     <option value="Uruguay">Uruguay</option>
-                     <option value="Uzbekistan">Uzbekistan</option>
-                     <option value="Vanuatu">Vanuatu</option>
-                     <option value="Vatican City State (Holy See)">Vatican City State (Holy See)</option>
-                     <option value="Venezuela">Venezuela</option>
-                     <option value="Viet Nam">Viet Nam</option>
-                     <option value="Virgin Islands (British)">Virgin Islands (British)</option>
-                     <option value="Virgin Islands (U.S.)">Virgin Islands (U.S.)</option>
-                     <option value="Wallis and Futuna Islands">Wallis and Futuna Islands</option>
-                     <option value="Western Sahara">Western Sahara</option>
-                     <option value="Yemen">Yemen</option>
-                     <option value="Yugoslavia">Yugoslavia</option>
-                     <option value="Zaire">Zaire</option>
-                     <option value="Zambia">Zambia</option>
-                     <option value="Zimbabwe">Zimbabwe</option>
-                  </select>
-               </div>
-            </div>
-         </div>
-
-         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Age between</label>
-            <input type="number" min="18" max="99" class="col-sm-2" placeholder="From" name="ageFrom"/>
-            <input type="number" min="18" max="99" class="col-sm-2" placeholder="To" name="ageTo"/>
-         </div>
-
-         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Height between</label>
-            <input type="number" min="140" max="210" class="col-sm-2" placeholder="From" name="heightFrom"/>
-            <input type="number" min="140" max="210" class="col-sm-2" placeholder="To" name="heightTo"/>
-         </div>
-
-         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Keywords</label>
-            <input type="text" class="col-sm-2" placeholder="keywords" name="keywords"/>
-         </div>
-
-         <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Church Attendance</label>
-            <select class="col-sm-4 form-control" name="churchAttendance">
-               <option selected="selected">Please select</option>
-               {% for val, display_name in church_attendance_name_to_display_name.items() %}
-               <option value="{{val}}">{{display_name}}</option>
-               {% endfor %}
-            </select>
-         </div>
-
-         <div class="form-group row">
-            <div class="col-sm-2">Looking for</div>
-            <div class="col">
-               {% for val, display_name in looking_for_name_to_display_name.items() %}
-               <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="lookingFor{{val}}" value="{{val}}" name="lookingFor">
-                  <label class="form-check-label" for="lookingFor{{val}}">{{display_name}}</label>
-               </div>
-               {% endfor %}
-            </div>
-         </div>
-
-         <div class="row">
-            <div class="col">
-               <div class="form-group row">
-                  <div class="col-sm-4">Drink</div>
-                  <div class="col-sm-6">
-                     {% for val, display_name in drink_name_to_display_name.items() %}
-                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="drink{{val}}" value="{{val}}" name="drink">
-                        <label class="form-check-label" for="drink{{val}}">{{display_name}}</label>
-                     </div>
-                     {% endfor %}
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div class="form-group row">
-                  <div class="col-sm-2">Smoke</div>
-                  <div class="col-sm-10">
-                     {% for val, display_name in smoke_name_to_display_name.items() %}
-                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="smoke{{val}}" value="{{val}}" name="smoke">
-                        <label class="form-check-label" for="smoke{{val}}">{{display_name}}</label>
-                     </div>
-                     {% endfor %}
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="form-group row">
-            <div class="col-sm-2">Body type</div>
-            <div class="col-sm-10">
-               {% for val, display_name in body_type_name_to_display_name.items() %}
-               <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="bodyType{{val}}" value="{{val}}" name="bodyType">
-                  <label class="form-check-label" for="bodyType{{val}}">{{display_name}}</label>
-               </div>
-               {% endfor %}
-            </div>
-         </div>
-
-         <div class="form-group row">
-            <div class="col-sm-2">Denomination</div>
-            <div class="col-sm-10">
-               {% for val, display_name in denomination_name_to_display_name.items() %}
-               <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="denomination{{val}}" value="{{val}}" name="denomination">
-                  <label class="form-check-label" for="denomination{{val}}">{{display_name}}</label>
-               </div>
-               {% endfor %}
-            </div>
-         </div>
-
-
-         <div class="row">
-            <div class="col">
-               <div class="form-group row">
-                  <div class="col-sm-4">Education Level</div>
-                  <div class="col">
-                     {% for val, display_name in education_level_name_to_display_name.items() %}
-                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="educationLevel{{val}}" value="{{val}}" name="educationLevel">
-                        <label class="form-check-label" for="educationLevel{{val}}">{{display_name}}</label>
-                     </div>
-                     {% endfor %}
-                  </div>
-               </div>
-
-               <div class="form-group row">
-                  <div class="col-sm-4">Marital Status</div>
-                  <div class="col">
-                     {% for val, display_name in marital_status_name_to_display_name.items() %}
-                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="maritalStatus{{val}}" value="{{val}}" name="maritalStatus">
-                        <label class="form-check-label" for="maritalStatus{{val}}">{{display_name}}</label>
-                     </div>
-                     {% endfor %}
-                  </div>
-               </div>
-
-            </div>
-
-            <div class="col">
-               <div class="form-group row">
-                  <div class="col-sm-4">Ethnicity</div>
-                  <div class="col">
-                     {% for val, display_name in ethnicity_name_to_display_name.items() %}
-                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="ethnicity{{val}}" value="{{val}}" name="ethnicity">
-                        <label class="form-check-label" for="ethnicity{{val}}">{{display_name}}</label>
-                     </div>
-                     {% endfor %}
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="row">
-            <div class="col">
-               <div class="form-group row">
-                  <div class="col-sm-4">Hair Color</div>
-                  <div class="col">
-                     {% for val, display_name in hair_color_name_to_display_name.items() %}
-                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="hairColor{{val}}" value="{{val}}" name="hairColor">
-                        <label class="form-check-label" for="hairColor{{val}}">{{display_name}}</label>
-                     </div>
-                     {% endfor %}
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div class="form-group row">
-                  <div class="col-sm-4">Eye Color</div>
-                  <div class="col">
-                     {% for val, display_name in eye_color_name_to_display_name.items() %}
-                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="eyeColor{{val}}" value="{{val}}" name="eyeColor">
-                        <label class="form-check-label" for="eyeColor{{val}}">{{display_name}}</label>
-                     </div>
-                     {% endfor %}
-                  </div>
-               </div>
-            </div>
-         </div>
-
-         <div class="row">
-            <div class="col">
-               <div class="form-group row">
-                  <div class="col-sm-4">User Wants children</div>
-                  <div class="col">
-                     {% for val, display_name in user_wants_children_name_to_display_name.items() %}
-                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="userWantsChildren{{val}}" value="{{val}}" name="userWantsChildren">
-                        <label class="form-check-label" for="userWantsChildren{{val}}">{{display_name}}</label>
-                     </div>
-                     {% endfor %}
-                  </div>
-               </div>
-            </div>
-
-            <div class="col">
-               <div class="form-group row">
-                  <div class="col-sm-4">User With children</div>
-                  <div class="col">
-                     {% for val, display_name in user_with_children_name_to_display_name.items() %}
-                     <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="userWithChildren{{val}}" value="{{val}}" name="userWithChildren">
-                        <label class="form-check-label" for="userWithChildren{{val}}">{{display_name}}</label>
-                     </div>
-                     {% endfor %}
-                  </div>
-               </div>
-            </div>
-         </div>
-         <div class="form-group row">
-            <div class="form-check">
-               <div class="form-check">
-                  <input type="checkbox" class="form-check-input" id="onlyWithPhotos" name="onlyWithPhotos">
-                  <label class="form-check-label" for="onlyWithPhotos">Only show results of members with photos</label>
-               </div>
-            </div>
-         </div>
-
-         <input value="Submit" class="btn btn-primary" type="submit">
-         <button class="btn btn-primary" type="button" onclick="clearForm()">Clear</button>
-      </form>
-
-      <ul class="list-group">
-         {% for p in profiles %}
-         <li class="list-group-item">
+      <div class="row">
+         <form id="search_form" action="profiles">
             <div class="row">
                <div class="col">
-                  {% for photoUrl in p.photo_urls_list %}
-                  <img src="{{photoUrl}}" height="160" width="100">
-                  {% endfor %}
+                  <div class="form-group row">
+                     <label class="col-sm-4 col-form-label">I am Seeking a</label>
+                     <select class="col form-control" name="gender">
+                        <option value="">Select</option>
+                        <option value="female">Female</option>
+                        <option value="male">Male</option>
+                     </select>
+                  </div>
                </div>
                <div class="col">
-                  <div>
-                     <p>From: {{ p.country }}</p>
-                     <p>Age: {{ p.age }}</p>
-                     <p>Profession: {{ p.profession }}</p>
-                     <a href="view_profile?id={{p.id}}">More</a>
+                  <div class="form-group row">
+                     <label class="col-sm-4 col-form-label">Country</label>
+                     <select class="col form-control" name="country">
+                        <option value="">All Countries</option>
+                        <option value="United States">United States</option>
+                        <option value="Canada">Canada</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Australia">Australia</option>
+                        <option value="Afghanistan">Afghanistan</option>
+                        <option value="Albania">Albania</option>
+                        <option value="Algeria">Algeria</option>
+                        <option value="American Samoa">American Samoa</option>
+                        <option value="Andorra">Andorra</option>
+                        <option value="Angola">Angola</option>
+                        <option value="Anguilla">Anguilla</option>
+                        <option value="Antarctica">Antarctica</option>
+                        <option value="Antigua and Barbuda">Antigua and Barbuda</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Armenia">Armenia</option>
+                        <option value="Aruba">Aruba</option>
+                        <option value="Austria">Austria</option>
+                        <option value="Azerbaijan">Azerbaijan</option>
+                        <option value="Bahamas">Bahamas</option>
+                        <option value="Bahrain">Bahrain</option>
+                        <option value="Bangladesh">Bangladesh</option>
+                        <option value="Barbados">Barbados</option>
+                        <option value="Belarus">Belarus</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Belize">Belize</option>
+                        <option value="Benin">Benin</option>
+                        <option value="Bermuda">Bermuda</option>
+                        <option value="Bhutan">Bhutan</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Bosnia and Herzegowina">Bosnia and Herzegowina</option>
+                        <option value="Botswana">Botswana</option>
+                        <option value="Bouvet Island">Bouvet Island</option>
+                        <option value="Brazil">Brazil</option>
+                        <option value="British Indian Ocean Territory">British Indian Ocean Territory</option>
+                        <option value="Brunei Darussalam">Brunei Darussalam</option>
+                        <option value="Bulgaria">Bulgaria</option>
+                        <option value="Burkina Faso">Burkina Faso</option>
+                        <option value="Burundi">Burundi</option>
+                        <option value="Cambodia">Cambodia</option>
+                        <option value="Cameroon">Cameroon</option>
+                        <option value="Cape Verde">Cape Verde</option>
+                        <option value="Cayman Islands">Cayman Islands</option>
+                        <option value="Central African Republic">Central African Republic</option>
+                        <option value="Chad">Chad</option>
+                        <option value="Chile">Chile</option>
+                        <option value="China">China</option>
+                        <option value="Christmas Island">Christmas Island</option>
+                        <option value="Cocos (Keeling) Islands">Cocos (Keeling) Islands</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Comoros">Comoros</option>
+                        <option value="Congo">Congo</option>
+                        <option value="Cook Islands">Cook Islands</option>
+                        <option value="Costa Rica">Costa Rica</option>
+                        <option value="Cote D'Ivoire">Cote D'Ivoire</option>
+                        <option value="Croatia">Croatia</option>
+                        <option value="Cuba">Cuba</option>
+                        <option value="Cyprus">Cyprus</option>
+                        <option value="Czech Republic">Czech Republic</option>
+                        <option value="Denmark">Denmark</option>
+                        <option value="Djibouti">Djibouti</option>
+                        <option value="Dominica">Dominica</option>
+                        <option value="Dominican Republic">Dominican Republic</option>
+                        <option value="East Timor">East Timor</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Egypt">Egypt</option>
+                        <option value="El Salvador">El Salvador</option>
+                        <option value="Equatorial Guinea">Equatorial Guinea</option>
+                        <option value="Eritrea">Eritrea</option>
+                        <option value="Estonia">Estonia</option>
+                        <option value="Ethiopia">Ethiopia</option>
+                        <option value="Falkland Islands (Malvinas)">Falkland Islands (Malvinas)</option>
+                        <option value="Faroe Islands">Faroe Islands</option>
+                        <option value="Fiji">Fiji</option>
+                        <option value="Finland">Finland</option>
+                        <option value="France">France</option>
+                        <option value="France, Metropolitan">France, Metropolitan</option>
+                        <option value="French Guiana">French Guiana</option>
+                        <option value="French Polynesia">French Polynesia</option>
+                        <option value="French Southern Territories">French Southern Territories</option>
+                        <option value="Gabon">Gabon</option>
+                        <option value="Gambia">Gambia</option>
+                        <option value="Georgia">Georgia</option>
+                        <option value="Germany">Germany</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="Gibraltar">Gibraltar</option>
+                        <option value="Greece">Greece</option>
+                        <option value="Greenland">Greenland</option>
+                        <option value="Grenada">Grenada</option>
+                        <option value="Guadeloupe">Guadeloupe</option>
+                        <option value="Guam">Guam</option>
+                        <option value="Guatemala">Guatemala</option>
+                        <option value="Guinea">Guinea</option>
+                        <option value="Guinea-bissau">Guinea-bissau</option>
+                        <option value="Guyana">Guyana</option>
+                        <option value="Haiti">Haiti</option>
+                        <option value="Heard and Mc Donald Islands">Heard and Mc Donald Islands</option>
+                        <option value="Honduras">Honduras</option>
+                        <option value="Hong Kong">Hong Kong</option>
+                        <option value="Hungary">Hungary</option>
+                        <option value="Iceland">Iceland</option>
+                        <option value="India">India</option>
+                        <option value="Indonesia">Indonesia</option>
+                        <option value="Iran (Islamic Republic of)">Iran (Islamic Republic of)</option>
+                        <option value="Iraq">Iraq</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Israel">Israel</option>
+                        <option value="Italy">Italy</option>
+                        <option value="Jamaica">Jamaica</option>
+                        <option value="Japan">Japan</option>
+                        <option value="Jordan">Jordan</option>
+                        <option value="Kazakhstan">Kazakhstan</option>
+                        <option value="Kenya">Kenya</option>
+                        <option value="Kiribati">Kiribati</option>
+                        <option value="Kuwait">Kuwait</option>
+                        <option value="Kyrgyzstan">Kyrgyzstan</option>
+                        <option value="Lao People's Democratic Republic">Lao People's Democratic Republic</option>
+                        <option value="Latvia">Latvia</option>
+                        <option value="Lebanon">Lebanon</option>
+                        <option value="Lesotho">Lesotho</option>
+                        <option value="Liberia">Liberia</option>
+                        <option value="Libyan Arab Jamahiriya">Libyan Arab Jamahiriya</option>
+                        <option value="Liechtenstein">Liechtenstein</option>
+                        <option value="Lithuania">Lithuania</option>
+                        <option value="Luxembourg">Luxembourg</option>
+                        <option value="Macau">Macau</option>
+                        <option value="Macedonia, The Former Yugoslav Republic of">Macedonia, The Former Yugoslav
+                           Republic
+                           of
+                        </option>
+                        <option value="Madagascar">Madagascar</option>
+                        <option value="Malawi">Malawi</option>
+                        <option value="Malaysia">Malaysia</option>
+                        <option value="Maldives">Maldives</option>
+                        <option value="Mali">Mali</option>
+                        <option value="Malta">Malta</option>
+                        <option value="Marshall Islands">Marshall Islands</option>
+                        <option value="Martinique">Martinique</option>
+                        <option value="Mauritania">Mauritania</option>
+                        <option value="Mauritius">Mauritius</option>
+                        <option value="Mayotte">Mayotte</option>
+                        <option value="Mexico">Mexico</option>
+                        <option value="Micronesia, Federated States of">Micronesia, Federated States of</option>
+                        <option value="Moldova, Republic of">Moldova, Republic of</option>
+                        <option value="Monaco">Monaco</option>
+                        <option value="Mongolia">Mongolia</option>
+                        <option value="Montserrat">Montserrat</option>
+                        <option value="Morocco">Morocco</option>
+                        <option value="Mozambique">Mozambique</option>
+                        <option value="Myanmar">Myanmar</option>
+                        <option value="Namibia">Namibia</option>
+                        <option value="Nauru">Nauru</option>
+                        <option value="Nepal">Nepal</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Netherlands Antilles">Netherlands Antilles</option>
+                        <option value="New Caledonia">New Caledonia</option>
+                        <option value="New Zealand">New Zealand</option>
+                        <option value="Nicaragua">Nicaragua</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Niue">Niue</option>
+                        <option value="Norfolk Island">Norfolk Island</option>
+                        <option value="Northern Mariana Islands">Northern Mariana Islands</option>
+                        <option value="Norway">Norway</option>
+                        <option value="Oman">Oman</option>
+                        <option value="Pakistan">Pakistan</option>
+                        <option value="Palau">Palau</option>
+                        <option value="Panama">Panama</option>
+                        <option value="Papua New Guinea">Papua New Guinea</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Philippines">Philippines</option>
+                        <option value="Pitcairn">Pitcairn</option>
+                        <option value="Poland">Poland</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Puerto Rico">Puerto Rico</option>
+                        <option value="Qatar">Qatar</option>
+                        <option value="Reunion">Reunion</option>
+                        <option value="Romania">Romania</option>
+                        <option value="Russian Federation">Russian Federation</option>
+                        <option value="Rwanda">Rwanda</option>
+                        <option value="Saint Kitts and Nevis">Saint Kitts and Nevis</option>
+                        <option value="Saint Lucia">Saint Lucia</option>
+                        <option value="Saint Vincent and the Grenadines">Saint Vincent and the Grenadines</option>
+                        <option value="Samoa">Samoa</option>
+                        <option value="San Marino">San Marino</option>
+                        <option value="Sao Tome and Principe">Sao Tome and Principe</option>
+                        <option value="Saudi Arabia">Saudi Arabia</option>
+                        <option value="Senegal">Senegal</option>
+                        <option value="Seychelles">Seychelles</option>
+                        <option value="Sierra Leone">Sierra Leone</option>
+                        <option value="Singapore">Singapore</option>
+                        <option value="Slovakia (Slovak Republic)">Slovakia (Slovak Republic)</option>
+                        <option value="Slovenia">Slovenia</option>
+                        <option value="Solomon Islands">Solomon Islands</option>
+                        <option value="Somalia">Somalia</option>
+                        <option value="South Africa">South Africa</option>
+                        <option value="South Georgia and the South Sandwich Islands">South Georgia and the South
+                           Sandwich
+                           Islands
+                        </option>
+                        <option value="South Korea">South Korea</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Sri Lanka">Sri Lanka</option>
+                        <option value="St. Helena">St. Helena</option>
+                        <option value="St. Pierre and Miquelon">St. Pierre and Miquelon</option>
+                        <option value="Sudan">Sudan</option>
+                        <option value="Suriname">Suriname</option>
+                        <option value="Svalbard and Jan Mayen Islands">Svalbard and Jan Mayen Islands</option>
+                        <option value="Swaziland">Swaziland</option>
+                        <option value="Sweden">Sweden</option>
+                        <option value="Switzerland">Switzerland</option>
+                        <option value="Syrian Arab Republic">Syrian Arab Republic</option>
+                        <option value="Taiwan">Taiwan</option>
+                        <option value="Tajikistan">Tajikistan</option>
+                        <option value="Tanzania, United Republic of">Tanzania, United Republic of</option>
+                        <option value="Thailand">Thailand</option>
+                        <option value="Togo">Togo</option>
+                        <option value="Tokelau">Tokelau</option>
+                        <option value="Tonga">Tonga</option>
+                        <option value="Trinidad and Tobago">Trinidad and Tobago</option>
+                        <option value="Tunisia">Tunisia</option>
+                        <option value="Turkey">Turkey</option>
+                        <option value="Turkmenistan">Turkmenistan</option>
+                        <option value="Turks and Caicos Islands">Turks and Caicos Islands</option>
+                        <option value="Tuvalu">Tuvalu</option>
+                        <option value="Uganda">Uganda</option>
+                        <option value="Ukraine">Ukraine</option>
+                        <option value="United Arab Emirates">United Arab Emirates</option>
+                        <option value="Uruguay">Uruguay</option>
+                        <option value="Uzbekistan">Uzbekistan</option>
+                        <option value="Vanuatu">Vanuatu</option>
+                        <option value="Vatican City State (Holy See)">Vatican City State (Holy See)</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="Viet Nam">Viet Nam</option>
+                        <option value="Virgin Islands (British)">Virgin Islands (British)</option>
+                        <option value="Virgin Islands (U.S.)">Virgin Islands (U.S.)</option>
+                        <option value="Wallis and Futuna Islands">Wallis and Futuna Islands</option>
+                        <option value="Western Sahara">Western Sahara</option>
+                        <option value="Yemen">Yemen</option>
+                        <option value="Yugoslavia">Yugoslavia</option>
+                        <option value="Zaire">Zaire</option>
+                        <option value="Zambia">Zambia</option>
+                        <option value="Zimbabwe">Zimbabwe</option>
+                     </select>
                   </div>
                </div>
             </div>
-         </li>
-         {% endfor %}
-      </ul>
 
-      {% if profiles|length == 0 %}
-      <p>No profiles</p>
-      {% endif %}
+            <div class="form-group row">
+               <label class="col-sm-2 col-form-label">Age between</label>
+               <input type="number" min="18" max="99" class="col-sm-2" placeholder="From" name="ageFrom"/>
+               <input type="number" min="18" max="99" class="col-sm-2" placeholder="To" name="ageTo"/>
 
-      {% if start > 0 %}
-      <a class="btn btn-primary" href="profiles?start={{ start - size }}&size={{ size }}">Prev</a>
-      {% endif %}
-      <a class="btn btn-primary" href="profiles?start={{ start + size }}&size={{ size }}">Next</a>
+               <label class="col-sm-2 col-form-label">Height between</label>
+               <input type="number" min="140" max="210" class="col-sm-2" placeholder="From" name="heightFrom"/>
+               <input type="number" min="140" max="210" class="col-sm-2" placeholder="To" name="heightTo"/>
+            </div>
+
+            <div class="form-group row">
+               <label class="col-sm-2 col-form-label">Keywords</label>
+               <input type="text" class="col-sm-4" placeholder="keywords" name="keywords"/>
+
+               <label class="col-sm-2 col-form-label">Church Attendance</label>
+               <select class="col-sm-4 form-control" name="churchAttendance">
+                  <option value="" selected="selected">Please select</option>
+                  {% for val, display_name in church_attendance_name_to_display_name.items() %}
+                  <option value="{{val}}">{{display_name}}</option>
+                  {% endfor %}
+               </select>
+            </div>
+
+            <div class="accordion" id="accordionExample">
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseLookingFor"
+                                aria-expanded="false" aria-controls="collapseLookingFor">
+                           Looking for
+                        </button>
+                     </h2>
+                  </div>
+
+                  <div class="collapse" id="collapseLookingFor">
+                     <div class="card-body">
+                        {% for val, display_name in looking_for_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="lookingFor{{val}}" value="{{val}}"
+                                  name="lookingFor">
+                           <label class="form-check-label" for="lookingFor{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseDrink"
+                                aria-expanded="false" aria-controls="collapseDrink">Drink
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseDrink">
+                     <div class="col-sm-6">
+                        {% for val, display_name in drink_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="drink{{val}}" value="{{val}}"
+                                  name="drink">
+                           <label class="form-check-label" for="drink{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+
+               </div>
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseSmoke"
+                                aria-expanded="false" aria-controls="collapseSmoke">Smoke
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseSmoke">
+                     <div class="col-sm-10">
+                        {% for val, display_name in smoke_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="smoke{{val}}" value="{{val}}"
+                                  name="smoke">
+                           <label class="form-check-label" for="smoke{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+
+               </div>
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseBodyType"
+                                aria-expanded="false" aria-controls="collapseBodyType">Body type
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseBodyType">
+                     <div class="col-sm-10">
+                        {% for val, display_name in body_type_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="bodyType{{val}}" value="{{val}}"
+                                  name="bodyType">
+                           <label class="form-check-label" for="bodyType{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseDenomination"
+                                aria-expanded="false" aria-controls="collapseDenomination">Denomination
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseDenomination">
+                     <div class="col-sm-10">
+                        {% for val, display_name in denomination_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="denomination{{val}}" value="{{val}}"
+                                  name="denomination">
+                           <label class="form-check-label" for="denomination{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+
+               </div>
+
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseEducationLevel" aria-expanded="false"
+                                aria-controls="collapseEducationLevel">Education Level
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseEducationLevel">
+                     <div class="col">
+                        {% for val, display_name in education_level_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="educationLevel{{val}}" value="{{val}}"
+                                  name="educationLevel">
+                           <label class="form-check-label" for="educationLevel{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+
+               </div>
+
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseMaritalStatus" aria-expanded="false"
+                                aria-controls="collapseMaritalStatus">Marital Status
+                        </button>
+                     </h2>
+                  </div>
+
+                  <div class="collapse" id="collapseMaritalStatus">
+                     <div class="col">
+                        {% for val, display_name in marital_status_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="maritalStatus{{val}}" value="{{val}}"
+                                  name="maritalStatus">
+                           <label class="form-check-label" for="maritalStatus{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseEthnicity"
+                                aria-expanded="false" aria-controls="collapseEthnicity">Ethnicity
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseEthnicity">
+                     <div class="col">
+                        {% for val, display_name in ethnicity_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="ethnicity{{val}}" value="{{val}}"
+                                  name="ethnicity">
+                           <label class="form-check-label" for="ethnicity{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseHairColor"
+                                aria-expanded="false" aria-controls="collapseHairColor">Hair Color
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseHairColor">
+                     <div class="col">
+                        {% for val, display_name in hair_color_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="hairColor{{val}}" value="{{val}}"
+                                  name="hairColor">
+                           <label class="form-check-label" for="hairColor{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseEyeColor"
+                                aria-expanded="false" aria-controls="collapseEyeColor">Eye Color
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseEyeColor">
+                     <div class="col">
+                        {% for val, display_name in eye_color_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="eyeColor{{val}}" value="{{val}}"
+                                  name="eyeColor">
+                           <label class="form-check-label" for="eyeColor{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseUserWantsChildren" aria-expanded="false"
+                                aria-controls="collapseUserWantsChildren">User Wants children
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseUserWantsChildren">
+                     <div class="col">
+                        {% for val, display_name in user_wants_children_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="userWantsChildren{{val}}" value="{{val}}"
+                                  name="userWantsChildren">
+                           <label class="form-check-label" for="userWantsChildren{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+
+               <div class="card">
+                  <div class="card-header">
+                     <h2 class="mb-0">
+                        <button class="btn btn-link btn-block" type="button" data-toggle="collapse"
+                                data-target="#collapseUserWithChildren" aria-expanded="false"
+                                aria-controls="collapseUserWithChildren">User With children
+                        </button>
+                     </h2>
+                  </div>
+                  <div class="collapse" id="collapseUserWithChildren">
+                     <div class="col">
+                        {% for val, display_name in user_with_children_name_to_display_name.items() %}
+                        <div class="form-check">
+                           <input type="checkbox" class="form-check-input" id="userWithChildren{{val}}" value="{{val}}"
+                                  name="userWithChildren">
+                           <label class="form-check-label" for="userWithChildren{{val}}">{{display_name}}</label>
+                        </div>
+                        {% endfor %}
+                     </div>
+                  </div>
+               </div>
+
+               <div class="form-group row">
+                  <div class="form-check">
+                     <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="onlyWithPhotos" name="onlyWithPhotos">
+                        <label class="form-check-label" for="onlyWithPhotos">Only show results of members with
+                           photos</label>
+                     </div>
+                  </div>
+               </div>
+
+               <input value="Submit" class="btn btn-primary" type="submit">
+               <button class="btn btn-primary" type="button" onclick="clearForm()">Clear</button>
+            </div>
+         </form>
+      </div>
+
+      <hr>
+
+      <div class="row">
+         <b>{{start}}</b> - <b>{{start + size}}</b>
+      </div>
+
+      <div class="row">
+         <nav aria-label="Page navigation example">
+            <ul class="pagination">
+               <li class="page-item {% if prev_page_link is none %} disabled {% endif %}">
+                  <a class="page-link" href="{{prev_page_link}}">Previous</a>
+               </li>
+               <li class="page-item"><a class="page-link" href="{{next_page_link}}">Next</a></li>
+            </ul>
+         </nav>
+      </div>
+
+      <div class="row">
+         <ul class="list-group">
+            {% for p in profiles %}
+            <li class="list-group-item">
+               <div class="row">
+                  <div class="col">
+                     {% for photoUrl in p.photo_urls_list %}
+                     <img src="{{photoUrl}}" height="160" width="100">
+                     {% endfor %}
+                  </div>
+                  <div class="col">
+                     <div>
+                        <p>From: {{ p.country }}</p>
+                        <p>Age: {{ p.age }}</p>
+                        <p>Profession: {{ p.profession }}</p>
+                        <a href="view_profile?id={{p.id}}">More</a>
+                     </div>
+                  </div>
+               </div>
+            </li>
+            {% endfor %}
+         </ul>
+
+         {% if profiles|length == 0 %}
+         <p>No profiles</p>
+         {% endif %}
+      </div>
+
+      <div class="row">
+         <b>{{start}}</b> - <b>{{start + size}}</b>
+      </div>
+
+      <div class="row">
+         <nav aria-label="Page navigation example">
+            <ul class="pagination">
+               <li class="page-item {% if prev_page_link is none %} disabled {% endif %}">
+                  <a class="page-link" href="{{prev_page_link}}">Previous</a>
+               </li>
+               <li class="page-item"><a class="page-link" href="{{next_page_link}}">Next</a></li>
+            </ul>
+         </nav>
+      </div>
    </div>
 </div>
 

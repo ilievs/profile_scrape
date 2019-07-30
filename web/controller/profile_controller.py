@@ -1,3 +1,5 @@
+import urllib.parse
+
 from werkzeug.exceptions import BadRequest
 from flask import Flask, request, render_template
 
@@ -66,6 +68,31 @@ def get_search_criteria_meta():
     return search_criteria_meta
 
 
+def get_pagination_links(url, start, size):
+    url_parts = urllib.parse.urlparse(url)
+
+    if url_parts.query:
+        query_params = urllib.parse.parse_qs(url_parts.query)
+    else:
+        query_params = {}
+
+    # for the prev page
+    prev_link = None
+    if start > 0:
+        query_params['start'] = max(0, start - size)
+        prev_link = url_parts.path + '?' + urllib.parse.urlencode(query_params, doseq=True)
+    elif 'start' in query_params:
+        del query_params['start']
+
+    # in case the query is missing the pagination params
+    query_params['size'] = size
+
+    query_params['start'] = start + size
+    next_link = url_parts.path + '?' + urllib.parse.urlencode(query_params, doseq=True)
+
+    return prev_link, next_link
+
+
 @app.route('/', methods=['GET'])
 def get_home():
     return render_template('home.html')
@@ -109,6 +136,10 @@ def get_query(db_session, search_criteria):
                                       Profile.first_date.contains(k)]]
 
             db_criteria.append(or_(*conditions))
+
+        church_attendance = search_criteria.get('churchAttendance')
+        if church_attendance:
+            db_criteria.append(Profile.church_attendance == church_attendance)
 
         looking_for_values = search_criteria.getlist('lookingFor', LookingFor)
         if looking_for_values:
@@ -172,19 +203,24 @@ def get_query(db_session, search_criteria):
     return query
 
 
-@app.route('/profiles', methods=['GET'])
-def get_profiles():
-
+def get_start_size(request):
     try:
         start = int(request.args.get('start'))
         size = int(request.args.get('size'))
 
-        if start < 0 or size > 100:
+        if start < 0 or size < 1 or size > 100:
             raise ValueError()
 
+        return start, size
+
     except (ValueError, TypeError):
-        start = 0
-        size = 30
+        return 0, 30
+
+
+@app.route('/profiles', methods=['GET'])
+def get_profiles():
+
+    start, size = get_start_size(request)
 
     end = start + size
 
@@ -193,10 +229,14 @@ def get_profiles():
     for r in results:
         r.photo_urls_list = r.photo_urls.split('|')
 
+    prev_link, next_link = get_pagination_links(request.url, start, size)
+
     return render_template('profiles.html',
                            profiles=results,
                            start=start,
                            size=size,
+                           prev_page_link=prev_link,
+                           next_page_link=next_link,
                            gender_name_to_display_name=gender_name_to_display_name,
                            looking_for_name_to_display_name=looking_for_name_to_display_name,
                            church_attendance_name_to_display_name=church_attendance_name_to_display_name,
