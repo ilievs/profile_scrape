@@ -104,9 +104,9 @@ def get_query(db_session, search_criteria):
 
     try:
 
-        genders = search_criteria.getlist('gender', )
+        genders = search_criteria.get('gender')
         if genders:
-            db_criteria.append(Profile.gender.in_(genders))
+            db_criteria.append(Profile.gender == genders)
 
         country = search_criteria.get('country')
         if country:
@@ -131,7 +131,8 @@ def get_query(db_session, search_criteria):
         keywords = search_criteria.get('keywords')
         if keywords:
             conditions = [con for k in keywords.split(',')
-                          for con in [Profile.interests.contains(k),
+                          for con in [Profile.profession.contains(k),
+                                      Profile.interests.contains(k),
                                       Profile.about_me.contains(k),
                                       Profile.first_date.contains(k)]]
 
