@@ -110,7 +110,7 @@ ethnicity_to_enum_mapping = {
     'European': Ethnicity.european,
     'Hispanic': Ethnicity.hispanic,
     'Indian': Ethnicity.indian,
-    'MiddleEastern': Ethnicity.middleEastern,
+    'Middle Eastern': Ethnicity.middleEastern,
     'African': Ethnicity.african,
     'Native American (Indian)': Ethnicity.nativeAmericanIndian,
     'Asian': Ethnicity.asian,
