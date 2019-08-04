@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-import scrape.utils as utils
+import scrape.value_mappers as value_mappers
 
 from model.profile import *
 
@@ -35,29 +35,29 @@ def parse_profile_page(url, page_html):
 
     profile = Profile(
         url=url,
-        gender=utils.get_gender(values[0]),
+        gender=value_mappers.get_gender(values[0]),
         country=values[1],
         city=values[2],
         state=values[3],
         height_cm=get_height_cm(values[4]),
         age=int(values[6]),
-        eye_color=utils.get_eye_color(values[7]),
-        body_type=utils.get_body_type(values[8]),
-        hair_color=utils.get_hair_color(values[9]),
-        ethnicity=utils.get_ethnicity(values[10]),
-        denomination=utils.get_denomination(values[11]),
+        eye_color=value_mappers.get_eye_color(values[7]),
+        body_type=value_mappers.get_body_type(values[8]),
+        hair_color=value_mappers.get_hair_color(values[9]),
+        ethnicity=value_mappers.get_ethnicity(values[10]),
+        denomination=value_mappers.get_denomination(values[11]),
         photo_urls='|'.join([img['src'] for img in tree.select('div.tooltip-img img')]),
-        looking_for=utils.get_looking_for(second_values[0]),
+        looking_for=value_mappers.get_looking_for(second_values[0]),
         church_name=second_values[1],
-        church_attendance=utils.get_church_attendance(second_values[2]),
+        church_attendance=value_mappers.get_church_attendance(second_values[2]),
         church_raised_in=second_values[3],
-        drink=utils.get_drink(second_values[4]),
-        smoke=utils.get_smoke(second_values[5]),
-        willing_to_relocate=utils.get_willing_to_relocate(second_values[6]),
-        marital_status=utils.get_marital_status(second_values[7]),
-        have_children=utils.get_user_with_children(second_values[8]),
-        want_children=utils.get_user_wants_children(second_values[9]),
-        education_level=utils.get_education_level(second_values[10]),
+        drink=value_mappers.get_drink(second_values[4]),
+        smoke=value_mappers.get_smoke(second_values[5]),
+        willing_to_relocate=value_mappers.get_willing_to_relocate(second_values[6]),
+        marital_status=value_mappers.get_marital_status(second_values[7]),
+        have_children=value_mappers.get_user_with_children(second_values[8]),
+        want_children=value_mappers.get_user_wants_children(second_values[9]),
+        education_level=value_mappers.get_education_level(second_values[10]),
         profession=second_values[11],
         interests=interests,
         about_me=about_me,
