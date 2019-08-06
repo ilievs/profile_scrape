@@ -1,4 +1,6 @@
 import urllib.parse
+import os
+import subprocess
 
 from werkzeug.exceptions import BadRequest
 from flask import Flask, request, render_template
@@ -9,13 +11,21 @@ from sqlalchemy.orm import sessionmaker
 from model.profile import *
 from collections import OrderedDict
 
+from common.config import read_config
 
 app = Flask(__name__)
 app.config['TEMPLATES_AUTO_RELOAD'] = True
 
-engine = create_engine('mysql+mysqlconnector://moblytics:moblytics@192.168.68.128:3306/moblytics', echo=False)
+config = read_config()
+
+engine = create_engine(config.db_url, echo=False)
 DbSession = sessionmaker(bind=engine)
 db_session = DbSession()
+
+
+def start_server():
+    os.environ['FLASK_APP'] = 'web.controller.profile_controller.py'
+    subprocess.run(['python', '-m', 'flask', 'run'])
 
 
 def uncamel(string):
@@ -281,3 +291,4 @@ def view_profile():
     profile.photo_urls_list = profile.photo_urls.split('|')
 
     return render_template('view_profile.html', profile=profile)
+
