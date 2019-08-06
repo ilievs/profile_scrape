@@ -13,29 +13,50 @@
 
 <div class="container">
 
-   {% for ph in profile.photo_urls_list %}
-   <img src="{{ph}}">
-   {% endfor %}
+   <h1 class="font-weight-light text-center text-lg-left mt-4 mb-0">Photos</h1>
+
+   <hr class="mt-2 mb-5">
+
+   <div class="row text-center text-lg-left">
+      {% for ph in profile.photo_urls_list %}
+      <div class="col-lg-3 col-md-4 col-6">
+         <div class="d-block mb-4 h-100">
+            <img class="img-fluid img-thumbnail" src="{{ph}}">
+         </div>
+      </div>
+      {% endfor %}
+   </div>
 
    <div class="row">
-      <div class="col">
-         <div class="row">
-            <a href="{{profile.url}}">Original Profile</a>
-         </div>
+      <a href="{{profile.url}}">Original Profile</a>
+   </div>
 
+   <div class="row">
+
+      <div class="col">
+         <h2>Basic</h2>
          <table class="table">
             <tr>
                <th>Gender</th>
                <td>{{profile.gender.name}}</td>
             </tr>
             <tr>
+               <th>Age</th>
+               <td>{{profile.age}}</td>
+            </tr>
+            <tr>
+               <th>Looking for</th>
+               <td>{{profile.looking_for.name}}</td>
+            </tr>
+         </table>
+      </div>
+
+      <div class="col">
+         <h2>Location</h2>
+         <table class="table">
+            <tr>
                <th>Country</th>
                <td>{{profile.country}}</td>
-            </tr>
-
-            <tr>
-               <th>City</th>
-               <td>{{profile.city}}</td>
             </tr>
 
             <tr>
@@ -44,88 +65,103 @@
             </tr>
 
             <tr>
-               <th>Age</th>
-               <td>{{profile.age}}</td>
+               <th>City</th>
+               <td>{{profile.city}}</td>
+            </tr>
+         </table>
+      </div>
+
+      <div class="col">
+         <h2>Habits</h2>
+         <table class="table">
+            <tr>
+               <th>Drink</th>
+               <td>{{profile.drink.name}}</td>
+            </tr>
+            <tr>
+               <th>Smoke</th>
+               <td>{{profile.smoke.name}}</td>
+            </tr>
+         </table>
+      </div>
+   </div>
+
+   <div class="row">
+      <div class="col">
+         <h2>Outward appearance related</h2>
+         <table class="table">
+            <tr>
+               <th>Ethnicity</th>
+               <td>{{profile.ethnicity.name}}</td>
+            </tr>
+            <tr>
+               <th>Body type</th>
+               <td>{{profile.body_type.name}}</td>
             </tr>
             <tr>
                <th>Height</th>
                <td>{{profile.height_cm}} cm</td>
             </tr>
-
-            <tr>
-               <th>Looking for</th>
-               <td>{{profile.looking_for.name}}</td>
-            </tr>
-
-            <tr>
-               <th>Church attendance</th>
-               <td>{{profile.church_attendance.name}}</td>
-            </tr>
-
-            <tr>
-               <th>Body type</th>
-               <td>{{profile.body_type.name}}</td>
-            </tr>
-
             <tr>
                <th>Eye color</th>
                <td>{{profile.eye_color.name}}</td>
             </tr>
-
             <tr>
                <th>Hair color</th>
                <td>{{profile.hair_color.name}}</td>
             </tr>
+         </table>
+      </div>
 
+      <div class="col">
+         <h2>Church related</h2>
+         <table class="table">
             <tr>
-               <th>Ethnicity</th>
-               <td>{{profile.ethnicity.name}}</td>
+               <th>Church attendance</th>
+               <td>{{profile.church_attendance.name}}</td>
             </tr>
-
             <tr>
                <th>Denomination</th>
                <td>{{profile.denomination.name}}</td>
             </tr>
-
             <tr>
                <th>Church name</th>
                <td>{{profile.church_name}}</td>
             </tr>
-
             <tr>
                <th>Church raised in</th>
                <td>{{profile.church_raised_in}}</td>
             </tr>
+         </table>
+      </div>
+   </div>
 
-            <tr>
-               <th>Drink</th>
-               <td>{{profile.drink.name}}</td>
-            </tr>
-
-            <tr>
-               <th>Smoke</th>
-               <td>{{profile.smoke.name}}</td>
-            </tr>
-
+   <div class="row">
+      <div class="col">
+         <h2>Family related</h2>
+         <table class="table">
             <tr>
                <th>Willing to relocate</th>
                <td>{{profile.willing_to_relocate.name}}</td>
             </tr>
-
             <tr>
                <th>Marital status</th>
                <td>{{profile.marital_status.name}}</td>
             </tr>
-
             <tr>
                <th>Have children</th>
                <td>{{profile.have_children.name}}</td>
             </tr>
-
             <tr>
                <th>Want children</th>
                <td>{{profile.want_children.name}}</td>
             </tr>
+         </table>
+      </div>
+
+      <div class="col">
+         <h2>Career life</h2>
+         <table class="table">
             <tr>
                <th>Education level</th>
                <td>{{profile.education_level.name}}</td>
@@ -136,22 +172,21 @@
                <td>{{profile.profession}}</td>
             </tr>
          </table>
-
-
-         <h2>Interests</h2>
-         <p>{{profile.interests}}</p>
-
-         <h2>About me</h2>
-         <p>{{profile.about_me}}</p>
-
-         <h2>First date</h2>
-         <p>{{profile.first_date}}</p>
-
-         <h2>Account settings criteria</h2>
-         <p>{{profile.account_settings_criteria}}</p>
-
       </div>
    </div>
+
+   <h2>Interests</h2>
+   <p>{{profile.interests}}</p>
+
+   <h2>About me</h2>
+   <p>{{profile.about_me}}</p>
+
+   <h2>First date</h2>
+   <p>{{profile.first_date}}</p>
+
+   <h2>Account settings criteria</h2>
+   <p>{{profile.account_settings_criteria}}</p>
+
 </div>
 
 </body>
