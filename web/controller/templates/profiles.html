@@ -171,7 +171,9 @@
          text-align: left;
       }
 
-
+      .pagination-results {
+         margin: 5px;
+      }
    </style>
 </head>
 
@@ -759,8 +761,13 @@
       <hr>
 
       <div class="row">
-         <b>{{start}}</b> - <b>{{start + size}}</b>
+         <label class="pagination-results">{{start}}</label>
+         <label class="pagination-results">-</label>
+         <label class="pagination-results">{{start + size}}</label>
+         <label class="pagination-results">from {{total}}</label>
       </div>
+
+      <hr>
 
       <div class="row">
          <nav aria-label="Page navigation example">
@@ -801,9 +808,16 @@
          {% endif %}
       </div>
 
+      <hr>
+
       <div class="row">
-         <b>{{start}}</b> - <b>{{start + size}}</b>
+         <label class="pagination-results">{{start}}</label>
+         <label class="pagination-results">-</label>
+         <label class="pagination-results">{{start + size}}</label>
+         <label class="pagination-results">from {{total}}</label>
       </div>
+
+      <hr>
 
       <div class="row">
          <nav aria-label="Page navigation example">

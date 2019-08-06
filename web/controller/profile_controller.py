@@ -47,8 +47,6 @@ willing_to_relocate_name_to_display_name = {lf.name: uncamel(lf.name) for lf in 
 def get_search_criteria_meta():
 
     search_criteria_meta = OrderedDict()
-    search_criteria_meta['']
-    Profile.__table__.columns
     for c in Profile.__table__.columns:
         field_criteria_meta = {
             'type': c.type.__visit_name__
@@ -225,7 +223,9 @@ def get_profiles():
 
     end = start + size
 
-    results = get_query(db_session, request.args)[start:end]
+    query = get_query(db_session, request.args)
+    total = query.count()
+    results = query[start:end]
 
     for r in results:
         r.photo_urls_list = r.photo_urls.split('|')
@@ -236,6 +236,7 @@ def get_profiles():
                            profiles=results,
                            start=start,
                            size=size,
+                           total=total,
                            prev_page_link=prev_link,
                            next_page_link=next_link,
                            gender_name_to_display_name=gender_name_to_display_name,
