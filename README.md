@@ -16,7 +16,7 @@ python main.py scrape
 For starting the server:
 
 ```
-python main.py scrape
+python main.py serve
 ```
 
 The scraping and the server can run simultaneously as separate processes. 
