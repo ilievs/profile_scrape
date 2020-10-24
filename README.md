@@ -1,15 +1,24 @@
-# profile_scrape
-Some python code for scraping the profiles of a specific site just for fun :)
+# Profile scrape
 
+## Description
+A scraper for a site with profiles
+
+## Getting started
 Install the required packages:
 
 ```
 pip install -r requirements.txt
 ```
 
+Run the tests:
+
+```
+python -m unittest -v com/dreamlab/profile_scrape/test/test_*
+```
+
 Start the database:
 
-```bash
+```
 docker-compose up -d
 ```
 
@@ -25,4 +34,4 @@ For starting the server:
 python main.py serve
 ```
 
-The scraping and the server can run simultaneously as separate processes. 
+The scraping and the server can run simultaneously as separate processes.

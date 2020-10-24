@@ -7,7 +7,7 @@ from scrape.profile_scrape import parse_profile_page
 class TestProfileScrape(unittest.TestCase):
 
     def test_normal_profile(self):
-        with open('scrape/example_profile.html', 'rt', encoding='utf-8') as f:
+        with open('com/dreamlab/profile_scrape/test/example_profile.html', 'rt', encoding='utf-8') as f:
             url = 'https://www.christiandatingforfree.com/view_profile.php?userid=2379593&pind=0'
             profile = parse_profile_page(url, f.read())
 
