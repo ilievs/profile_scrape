@@ -111,6 +111,7 @@ def get_countries():
     tree = BeautifulSoup(r.text, 'html.parser')
     return {opt['value']: opt.text for opt in tree.select('#u_country option')}
 
+
 def build_url(url, params):
 
     if not params:
