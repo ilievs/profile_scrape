@@ -10,19 +10,21 @@ class TestResultPageParsing(unittest.TestCase):
 
             links = get_profile_links(f.read())
 
-            self.assertEqual(links, ['https://www.christiandatingforfree.com/view_profile.php?userid=1870550&pind=',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2460464&pind=1',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2452997&pind=2',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2506925&pind=3',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2612099&pind=0',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2382029&pind=1',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2604596&pind=2',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2601052&pind=3',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=1933953&pind=4',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2578331&pind=5',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2191801&pind=6',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2612248&pind=7',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=1064305&pind=8',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2518835&pind=9',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=2563073&pind=10',
-                                    'https://www.christiandatingforfree.com/view_profile.php?userid=1638539&pind=11'])
+            self.assertEqual(links, [
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3281189&pind=',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3129887&pind=1',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3240819&pind=2',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3205163&pind=3',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3295921&pind=0',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3177033&pind=1',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3321665&pind=2',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3316820&pind=3',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3313726&pind=4',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3321659&pind=5',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3283893&pind=6',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=2666629&pind=7',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3321704&pind=8',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3317072&pind=9',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=3318423&pind=10',
+                'https://www.christiandatingforfree.com/view_profile.php?userid=1481997&pind=11',
+            ])
