@@ -1,0 +1,6 @@
+requests
+requests-futures
+bs4
+Flask
+mysql-connector-python>=8.0.15
+SQLAlchemy>=1.3.5
