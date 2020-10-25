@@ -7,45 +7,49 @@ from scrape.profile_scrape import parse_profile_page
 class TestProfileScrape(unittest.TestCase):
 
     def test_normal_profile(self):
-        with open('com/dreamlab/profile_scrape/test/example_profile.html', 'rt', encoding='utf-8') as f:
-            url = 'https://www.christiandatingforfree.com/view_profile.php?userid=2379593&pind=0'
+        html_file_dir = '/'.join(__file__.split('/')[:-1]) + '/example_profile.html'
+        with open(html_file_dir, 'rt', encoding='utf-8') as f:
+            url = 'https://www.christiandatingforfree.com/view_profile.php?userid=3240819&pind=2'
             profile = parse_profile_page(url, f.read())
 
-            self.assertEqual(profile.url, url)
-            self.assertEqual(profile.gender, Gender.female)
-            self.assertEqual(profile.country, "Brazil")
-            self.assertEqual(profile.city, "Cuiabá")
-            self.assertEqual(profile.state, "Mato Grosso")
-            self.assertEqual(profile.height_cm, 162)
-            self.assertEqual(profile.age, 21)
-            self.assertEqual(profile.eye_color, EyeColor.brown)
-            self.assertEqual(profile.body_type, BodyType.athletic)
-            self.assertEqual(profile.hair_color, HairColor.brown)
-            self.assertEqual(profile.ethnicity, Ethnicity.undefined)
-            self.assertEqual(profile.denomination, Denomination.evangelical)
-            self.assertEqual(profile.photo_urls, 'http://photos.christiandatingforfree.com/thumb_cache/2019/0302/480x/'
-                                                 'u_id_2379593__480x480__width_height__20190304041453__%28%7C%29usr%402'
-                                                 '379593%402019-03-02%28%7C%29f375873dc3ce9e704e110a8c72e3569c.jpg|'
-                                                 'http://photos.christiandatingforfree.com/thumb_cache/2019/0302/480x/'
-                                                 'u_id_2379593__480x480__width_height__20190525200334__%28%7C%29usr%40'
-                                                 '2379593%402019-03-02%28%7C%2955d4d6cc1c8a9b0fe9c5396f3caee4e7.jpg|'
-                                                 'http://photos.christiandatingforfree.com/thumb_cache/2019/0302/480x/'
-                                                 'u_id_2379593__480x480__width_height__20190525200503__%28%7C%29usr%40'
-                                                 '2379593%402019-03-02%28%7C%298d2ec5fbf920e32201a18e6f5572b04c.jpg')
-            self.assertEqual(profile.looking_for, LookingFor.longTermRelationship)
-            self.assertEqual(profile.church_name, 'Congregação')
-            self.assertEqual(profile.church_attendance, ChurchAttendance.everyWeek)
-            self.assertEqual(profile.church_raised_in, 'Evangelical')
-            self.assertEqual(profile.drink, Drink.no)
-            self.assertEqual(profile.smoke, Smoke.no)
-            self.assertEqual(profile.willing_to_relocate, WillingToRelocate.possiblyWhoKnows)
-            self.assertEqual(profile.marital_status, MaritalStatus.single)
-            self.assertEqual(profile.have_children, UserWithChildren.no)
-            self.assertEqual(profile.want_children, UserWantsChildren.undecidedOpen)
-            self.assertEqual(profile.education_level, EducationLevel.highSchoolGraduate)
-            self.assertEqual(profile.profession, 'Biomedicina')
-            self.assertEqual(profile.interests, None)
-            self.assertEqual(profile.about_me, "I'm Amandha, I like to practice gym, I'm a college student Biomedical,"
-                                               " I love in my book, I like to be with my Family, to go to the park.")
-            self.assertEqual(profile.first_date, None)
-            self.assertEqual(profile.account_settings_criteria, 'Any Age.')
+            self.assertEqual(url, profile.url)
+            self.assertEqual(Gender.female, profile.gender)
+            self.assertEqual("United States", profile.country)
+            self.assertEqual("Detroit", profile.city)
+            self.assertEqual("Michigan", profile.state)
+            self.assertEqual(162, profile.height)
+            self.assertEqual(23, profile.age)
+            self.assertEqual(EyeColor.brown, profile.eye_color)
+            self.assertEqual(BodyType.slender, profile.body_type)
+            self.assertEqual(HairColor.black, profile.hair_color)
+            self.assertEqual(Ethnicity.africanAmerican, profile.ethnicity)
+            self.assertEqual(Denomination.christianReformed, profile.denomination)
+            self.assertEqual('https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815171833__%28%7C%29usr%403240819%402020-08-15%28%7C%290bcd9bb5ce0653afba556eb5faf17287.jpg|'
+                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815172314__%28%7C%29usr%403240819%402020-08-15%28%7C%29d011e030bc75724e8433c34df71d5d78.jpg|'
+                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815172434__%28%7C%29usr%403240819%402020-08-15%28%7C%29a97a2ee88342986010dd87ebb042a9be.jpg|'
+                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200906230117__%28%7C%29usr%403240819%402020-08-15%28%7C%292ae48956703c5984f5b8fa480ab5dca8.jpg|'
+                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200906230153__%28%7C%29usr%403240819%402020-08-15%28%7C%2960b850c08a77b98c4b6e6899888f093f.jpg',
+                             profile.image_urls)
+
+            self.assertEqual(LookingFor.longTermRelationship, profile.looking_for)
+            self.assertEqual('Word Of Faith international Christian center', profile.church_name)
+            self.assertEqual(ChurchAttendance.everyWeek, profile.church_attendance)
+            self.assertEqual('', profile.church_raised_in)
+            self.assertEqual(Drink.no, profile.drink)
+            self.assertEqual(Smoke.no, profile.smoke)
+            self.assertEqual(WillingToRelocate.sureWhyNot, profile.willing_to_relocate)
+            self.assertEqual(MaritalStatus.single, profile.marital_status)
+            self.assertEqual(UserWithChildren.yes, profile.have_children)
+            self.assertEqual(UserWantsChildren.wantChildren, profile.want_children)
+            self.assertEqual(EducationLevel.highSchoolGraduate, profile.education_level)
+            self.assertEqual('Helping People Get Closer God', profile.profession)
+            self.assertEqual('Men', profile.interests)
+            self.assertEqual("I'm a God-fearing woman that's loving caring and love helping people 😁💖💯",
+                             profile.about_me)
+
+            self.assertEqual('Take long walks by the beach or River', profile.first_date)
+            self.assertEqual('Age between 22 to 28.|'
+                             'Must not Smoke.|'
+                             'Must not Drink.|'
+                             'Appears on 11 members favorites lists',
+                             profile.account_settings_criteria)
