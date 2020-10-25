@@ -199,7 +199,7 @@ def get_query(db_session, search_criteria):
             db_criteria.append(Profile.have_children.in_(user_with_children))
 
         if search_criteria.get('onlyWithPhotos', None):
-            db_criteria.append(Profile.photo_urls != '')
+            db_criteria.append(Profile.image_urls != '')
 
     except ValueError:
         pass
@@ -238,7 +238,7 @@ def get_profiles():
     results = query[start:end]
 
     for r in results:
-        r.photo_urls_list = r.photo_urls.split('|')
+        r.image_urls_list = r.image_urls.split('|')
 
     prev_link, next_link = get_pagination_links(request.url, start, size)
 
@@ -270,7 +270,7 @@ def get_profiles():
     #
     # try:
     #     for pd in profile_dicts:
-    #         pd['photo_urls'] = pd['photo_urls'].split('|')
+    #         pd['image_urls'] = pd['image_urls'].split('|')
     # except LookupError:
     #     pass
     #
@@ -288,7 +288,7 @@ def view_profile():
     if not profile:
         raise BadRequest('Could not find profile with given id')
 
-    profile.photo_urls_list = profile.photo_urls.split('|')
+    profile.image_urls_list = profile.image_urls.split('|')
 
     return render_template('view_profile.html', profile=profile)
 
