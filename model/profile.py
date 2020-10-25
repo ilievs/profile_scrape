@@ -184,7 +184,7 @@ class WillingToRelocate(str, enum.Enum):
 
 class Profile(Base):
 
-    __tablename__ = 'profiles_v3'
+    __tablename__ = 'profiles'
 
     id = Column(Integer, primary_key=True)
     name = Column(Text)
