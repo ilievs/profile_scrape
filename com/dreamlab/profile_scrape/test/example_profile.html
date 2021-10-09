@@ -1,0 +1,894 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge"><script type="5e6add5ed34cd809bb979a29-text/javascript">(window.NREUM||(NREUM={})).loader_config={licenseKey:"ea5e69dd0b",applicationID:"75608222"};window.NREUM||(NREUM={}),__nr_require=function(e,t,n){function r(n){if(!t[n]){var i=t[n]={exports:{}};e[n][0].call(i.exports,function(t){var i=e[n][1][t];return r(i||t)},i,i.exports)}return t[n].exports}if("function"==typeof __nr_require)return __nr_require;for(var i=0;i<n.length;i++)r(n[i]);return r}({1:[function(e,t,n){function r(){}function i(e,t,n){return function(){return o(e,[u.now()].concat(c(arguments)),t?null:this,n),t?void 0:this}}var o=e("handle"),a=e(6),c=e(7),f=e("ee").get("tracer"),u=e("loader"),s=NREUM;"undefined"==typeof window.newrelic&&(newrelic=s);var d=["setPageViewName","setCustomAttribute","setErrorHandler","finished","addToTrace","inlineHit","addRelease"],p="api-",l=p+"ixn-";a(d,function(e,t){s[t]=i(p+t,!0,"api")}),s.addPageAction=i(p+"addPageAction",!0),s.setCurrentRouteName=i(p+"routeName",!0),t.exports=newrelic,s.interaction=function(){return(new r).get()};var m=r.prototype={createTracer:function(e,t){var n={},r=this,i="function"==typeof t;return o(l+"tracer",[u.now(),e,n],r),function(){if(f.emit((i?"":"no-")+"fn-start",[u.now(),r,i],n),i)try{return t.apply(this,arguments)}catch(e){throw f.emit("fn-err",[arguments,this,e],n),e}finally{f.emit("fn-end",[u.now()],n)}}}};a("actionText,setName,setAttribute,save,ignore,onEnd,getContext,end,get".split(","),function(e,t){m[t]=i(l+t)}),newrelic.noticeError=function(e,t){"string"==typeof e&&(e=new Error(e)),o("err",[e,u.now(),!1,t])}},{}],2:[function(e,t,n){function r(){return c.exists&&performance.now?Math.round(performance.now()):(o=Math.max((new Date).getTime(),o))-a}function i(){return o}var o=(new Date).getTime(),a=o,c=e(8);t.exports=r,t.exports.offset=a,t.exports.getLastTimestamp=i},{}],3:[function(e,t,n){function r(e,t){var n=e.getEntries();n.forEach(function(e){"first-paint"===e.name?d("timing",["fp",Math.floor(e.startTime)]):"first-contentful-paint"===e.name&&d("timing",["fcp",Math.floor(e.startTime)])})}function i(e,t){var n=e.getEntries();n.length>0&&d("lcp",[n[n.length-1]])}function o(e){e.getEntries().forEach(function(e){e.hadRecentInput||d("cls",[e])})}function a(e){if(e instanceof m&&!g){var t=Math.round(e.timeStamp),n={type:e.type};t<=p.now()?n.fid=p.now()-t:t>p.offset&&t<=Date.now()?(t-=p.offset,n.fid=p.now()-t):t=p.now(),g=!0,d("timing",["fi",t,n])}}function c(e){d("pageHide",[p.now(),e])}if(!("init"in NREUM&&"page_view_timing"in NREUM.init&&"enabled"in NREUM.init.page_view_timing&&NREUM.init.page_view_timing.enabled===!1)){var f,u,s,d=e("handle"),p=e("loader"),l=e(5),m=NREUM.o.EV;if("PerformanceObserver"in window&&"function"==typeof window.PerformanceObserver){f=new PerformanceObserver(r);try{f.observe({entryTypes:["paint"]})}catch(v){}u=new PerformanceObserver(i);try{u.observe({entryTypes:["largest-contentful-paint"]})}catch(v){}s=new PerformanceObserver(o);try{s.observe({type:"layout-shift",buffered:!0})}catch(v){}}if("addEventListener"in document){var g=!1,y=["click","keydown","mousedown","pointerdown","touchstart"];y.forEach(function(e){document.addEventListener(e,a,!1)})}l(c)}},{}],4:[function(e,t,n){function r(e,t){if(!i)return!1;if(e!==i)return!1;if(!t)return!0;if(!o)return!1;for(var n=o.split("."),r=t.split("."),a=0;a<r.length;a++)if(r[a]!==n[a])return!1;return!0}var i=null,o=null,a=/Version\/(\S+)\s+Safari/;if(navigator.userAgent){var c=navigator.userAgent,f=c.match(a);f&&c.indexOf("Chrome")===-1&&c.indexOf("Chromium")===-1&&(i="Safari",o=f[1])}t.exports={agent:i,version:o,match:r}},{}],5:[function(e,t,n){function r(e){function t(){e(a&&document[a]?document[a]:document[i]?"hidden":"visible")}"addEventListener"in document&&o&&document.addEventListener(o,t,!1)}t.exports=r;var i,o,a;"undefined"!=typeof document.hidden?(i="hidden",o="visibilitychange",a="visibilityState"):"undefined"!=typeof document.msHidden?(i="msHidden",o="msvisibilitychange"):"undefined"!=typeof document.webkitHidden&&(i="webkitHidden",o="webkitvisibilitychange",a="webkitVisibilityState")},{}],6:[function(e,t,n){function r(e,t){var n=[],r="",o=0;for(r in e)i.call(e,r)&&(n[o]=t(r,e[r]),o+=1);return n}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],7:[function(e,t,n){function r(e,t,n){t||(t=0),"undefined"==typeof n&&(n=e?e.length:0);for(var r=-1,i=n-t||0,o=Array(i<0?0:i);++r<i;)o[r]=e[t+r];return o}t.exports=r},{}],8:[function(e,t,n){t.exports={exists:"undefined"!=typeof window.performance&&window.performance.timing&&"undefined"!=typeof window.performance.timing.navigationStart}},{}],ee:[function(e,t,n){function r(){}function i(e){function t(e){return e&&e instanceof r?e:e?f(e,c,o):o()}function n(n,r,i,o){if(!p.aborted||o){e&&e(n,r,i);for(var a=t(i),c=v(n),f=c.length,u=0;u<f;u++)c[u].apply(a,r);var d=s[w[n]];return d&&d.push([b,n,r,a]),a}}function l(e,t){h[e]=v(e).concat(t)}function m(e,t){var n=h[e];if(n)for(var r=0;r<n.length;r++)n[r]===t&&n.splice(r,1)}function v(e){return h[e]||[]}function g(e){return d[e]=d[e]||i(n)}function y(e,t){u(e,function(e,n){t=t||"feature",w[n]=t,t in s||(s[t]=[])})}var h={},w={},b={on:l,addEventListener:l,removeEventListener:m,emit:n,get:g,listeners:v,context:t,buffer:y,abort:a,aborted:!1};return b}function o(){return new r}function a(){(s.api||s.feature)&&(p.aborted=!0,s=p.backlog={})}var c="nr@context",f=e("gos"),u=e(6),s={},d={},p=t.exports=i();p.backlog=s},{}],gos:[function(e,t,n){function r(e,t,n){if(i.call(e,t))return e[t];var r=n();if(Object.defineProperty&&Object.keys)try{return Object.defineProperty(e,t,{value:r,writable:!0,enumerable:!1}),r}catch(o){}return e[t]=r,r}var i=Object.prototype.hasOwnProperty;t.exports=r},{}],handle:[function(e,t,n){function r(e,t,n,r){i.buffer([e],r),i.emit(e,t,n)}var i=e("ee").get("handle");t.exports=r,r.ee=i},{}],id:[function(e,t,n){function r(e){var t=typeof e;return!e||"object"!==t&&"function"!==t?-1:e===window?0:a(e,o,function(){return i++})}var i=1,o="nr@id",a=e("gos");t.exports=r},{}],loader:[function(e,t,n){function r(){if(!E++){var e=b.info=NREUM.info,t=p.getElementsByTagName("script")[0];if(setTimeout(u.abort,3e4),!(e&&e.licenseKey&&e.applicationID&&t))return u.abort();f(h,function(t,n){e[t]||(e[t]=n)});var n=a();c("mark",["onload",n+b.offset],null,"api"),c("timing",["load",n]);var r=p.createElement("script");r.src="https://"+e.agent,t.parentNode.insertBefore(r,t)}}function i(){"complete"===p.readyState&&o()}function o(){c("mark",["domContent",a()+b.offset],null,"api")}var a=e(2),c=e("handle"),f=e(6),u=e("ee"),s=e(4),d=window,p=d.document,l="addEventListener",m="attachEvent",v=d.XMLHttpRequest,g=v&&v.prototype;NREUM.o={ST:setTimeout,SI:d.setImmediate,CT:clearTimeout,XHR:v,REQ:d.Request,EV:d.Event,PR:d.Promise,MO:d.MutationObserver};var y=""+location,h={beacon:"bam.nr-data.net",errorBeacon:"bam.nr-data.net",agent:"js-agent.newrelic.com/nr-1184.min.js"},w=v&&g&&g[l]&&!/CriOS/.test(navigator.userAgent),b=t.exports={offset:a.getLastTimestamp(),now:a,origin:y,features:{},xhrWrappable:w,userAgent:s};e(1),e(3),p[l]?(p[l]("DOMContentLoaded",o,!1),d[l]("load",r,!1)):(p[m]("onreadystatechange",i),d[m]("onload",r)),c("mark",["firstbyte",a.getLastTimestamp()],null,"api");var E=0},{}],"wrap-function":[function(e,t,n){function r(e){return!(e&&e instanceof Function&&e.apply&&!e[a])}var i=e("ee"),o=e(7),a="nr@original",c=Object.prototype.hasOwnProperty,f=!1;t.exports=function(e,t){function n(e,t,n,i){function nrWrapper(){var r,a,c,f;try{a=this,r=o(arguments),c="function"==typeof n?n(r,a):n||{}}catch(u){p([u,"",[r,a,i],c])}s(t+"start",[r,a,i],c);try{return f=e.apply(a,r)}catch(d){throw s(t+"err",[r,a,d],c),d}finally{s(t+"end",[r,a,f],c)}}return r(e)?e:(t||(t=""),nrWrapper[a]=e,d(e,nrWrapper),nrWrapper)}function u(e,t,i,o){i||(i="");var a,c,f,u="-"===i.charAt(0);for(f=0;f<t.length;f++)c=t[f],a=e[c],r(a)||(e[c]=n(a,u?c+i:i,o,c))}function s(n,r,i){if(!f||t){var o=f;f=!0;try{e.emit(n,r,i,t)}catch(a){p([a,n,r,i])}f=o}}function d(e,t){if(Object.defineProperty&&Object.keys)try{var n=Object.keys(e);return n.forEach(function(n){Object.defineProperty(t,n,{get:function(){return e[n]},set:function(t){return e[n]=t,t}})}),t}catch(r){p([r])}for(var i in e)c.call(e,i)&&(t[i]=e[i]);return t}function p(t){try{e.emit("internal-error",t)}catch(n){}}return e||(e=i),n.inPlace=u,n.flag=a,n}},{}]},{},["loader"]);</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32-32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96-96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16-16.png">
+<link rel="icon" href="/favicon.ico" type="image/png">
+<link rel="manifest" href="/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="apple-itunes-app" content="app-id=625001689" />
+
+<title>Lanina Detroit Christian Singles, Detroit Michigan Christian Women</title>
+
+<link href="https://www.christiandatingforfree.com/public/style/Open_Sans_Condensed_700.css" rel="stylesheet" type="text/css">
+<link href="https://www.christiandatingforfree.com/public/style/bootstrap.css" rel="stylesheet" type="text/css"><link href="https://www.christiandatingforfree.com/html5/inner3.css?v=00118" rel="stylesheet" type="text/css" media="screen" /><link href="https://www.christiandatingforfree.com/public/style/prevoius_header2.css" rel="stylesheet" type="text/css" media="screen" /><link href="https://www.christiandatingforfree.com/html5/inner_res_5.css?v=010" rel="stylesheet" type="text/css" media="screen" />
+<meta name="description" content="I&#039;m a God-fearing woman that&#039;s loving caring and love helping people 😁💖💯" />
+<meta name="keywords" content="Christian Dating, Christian Single, Christian Singles, Free Christian Dating, Christian dating Service, 100% Free Service for Christian Singles" />
+<meta name="verify-v1" content="nN7uQPbBna7PUGqd+AhHPBFgDuS9Bia6Cntmcpn9FnI=" />
+<meta name="verify-v1" content="LqVo/BrjAtOaVsGn7vjiG4F8bQgNZgTEVy5fp85kM+w=" />
+<link rel="canonical" href="https://www.christiandatingforfree.com/view_profile.php?userid=3240819&pind=2" />
+<script type="5e6add5ed34cd809bb979a29-text/javascript" src='https://partner.googleadservices.com/gampad/google_service.js'>
+</script>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+GS_googleAddAdSenseService("ca-pub-4427896316517083");
+GS_googleEnableAllServices();
+</script>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+;;;;</script>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+GA_googleFetchAds();
+</script>
+<link rel="preload" href="https://www.christiandatingforfree.com/public/style/bootstrap.css" as="style">
+<script data-cfasync="false" src="https://www.christiandatingforfree.com/public/js/jquery.js" language="javascript"></script>
+
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+
+!function(f,b,e,v,n,t,s)
+
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+
+n.queue=[];t=b.createElement(e);t.async=!0;
+
+t.src=v;s=b.getElementsByTagName(e)[0];
+
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+
+'https://connect.facebook.net/en_US/fbevents.js');
+
+fbq('init', '655906858352513');
+
+fbq('track', 'PageView');
+
+</script>
+<noscript><img height="1" width="1" style="display:none"
+
+src="https://www.facebook.com/tr?id=655906858352513&ev=PageView&noscript=1"
+
+/></noscript>
+
+</head>
+
+
+
+
+
+
+<style type="text/css">
+.footer_paginations{
+margin: 10px 7px 5px;
+}
+.footer_paginations table tr td{
+padding:2px;
+}
+.footer_paginations a {
+background-color: #2269b2;
+border: medium;
+border-radius: 2px;
+color: #fff !important;
+display: inline-block;
+font-weight: 400 !important;
+margin: 1px 0;
+padding: 4px 10px 3px;
+text-align: center;
+text-decoration: none;
+}
+@media(max-width:400px){
+.footer_paginations a {
+padding: 4px 4px 3px;
+}
+}
+.footer_paginations a strong{
+font-weight:400 !important;
+}
+</style>
+<body>
+<div id="wrapper">
+
+<div class="maincontainer">
+<header>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+    window.fbAsyncInit = function() {
+        FB.init({
+            appId : 434781160188866,
+            status : true,
+            cookie : true,
+            xfbml : true
+        });
+    };
+
+    (function(d){
+        var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+        if (d.getElementById(id)) {
+            return;
+        }
+        js = d.createElement('script');
+        js.id = id;
+        js.async = true;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        ref.parentNode.insertBefore(js, ref);
+    }(document));
+
+    function fb_logout(url) {
+        FB.getLoginStatus(function (response) {
+            if (response.status === 'connected') {
+                FB.logout(function (response) {
+                    //window.location.href = url;
+                });
+            } else {
+                //window.location.href = url;
+            }
+        });
+    }
+</script>
+<style>
+.user-grid-list article .online-today {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    display: inline-block;
+    top: -1px;
+    background-color: #ecdb5e;
+    border-radius: 100px;
+    margin-left:5px;
+}
+</style>
+<div class="row">
+<div class="col-sm-3 ">
+</div>
+<div class="col-sm-6 logo_section">
+<a href="https://www.christiandatingforfree.com/" class="logo">
+<img src="https://pics.christiandatingforfree.com/cdff/public/images/cdff-logo_new.png" alt="Christian Dating For Free" class="img-responsive" />
+</a>
+</div>
+<div class="col-sm-3 loginsec">
+<div class="header-btns">
+<a href="https://www.christiandatingforfree.com/login.php" class="button color2">Login</a>
+<a href="https://www.christiandatingforfree.com/registration.php" class="button ">Create New Account</a>
+</div>
+</div>
+
+</div>
+<nav class="navbar-default" role="navigation">
+<div class="navbar-header">
+<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-menu"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+<div class="collapse navbar-collapse" id="main-menu">
+<ul class="nav navbar-nav">
+<li><a href="https://www.christiandatingforfree.com/mail_inbox.php">Messages</a></li>
+<li><a href="https://www.christiandatingforfree.com/winks.php">Winks</a></li>
+<li><a href="https://www.christiandatingforfree.com/view_match.php">Matches</a></li>
+<li><a href="https://www.christiandatingforfree.com/viewed_me.php">Viewed Me</a></li>
+<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Online <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+<li><a href="https://www.christiandatingforfree.com/onlinenow.php?u_seeking=">Online Now</a></li>
+<li><a href="https://www.christiandatingforfree.com/onlinetoday.php?u_seeking=">Online Today</a></li>
+<li><a href="https://www.christiandatingforfree.com/newuser_search.php?u_seeking=">New Users</a></li>
+</ul>
+</li>
+<li class="dropdown"><a href="https://www.christiandatingforfree.com/basic_search.php" class="dropdown-toggle" data-toggle="dropdown">Search <span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+<li><a href="https://www.christiandatingforfree.com/basic_search.php">Basic Search</a></li>
+<li><a href="https://www.christiandatingforfree.com/advance_search.php">Advanced Search</a></li>
+<li class="last"><a href="https://www.christiandatingforfree.com/user_search.php">User Search</a></li>
+</ul>
+</li>
+<li class="dropdown"><a href="https://www.christiandatingforfree.com/favorites.php" class="dropdown-toggle" data-toggle="dropdown">Favorites<span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+
+<li> <a href="https://www.christiandatingforfree.com/login.php?dest=favorites">Favorites</a></li>
+<li> <a href="https://www.christiandatingforfree.com/login.php?dest=favorite_by">Favorited By</a></li>
+<li> <a href="https://www.christiandatingforfree.com/login.php?dest=mutual_favorites">Mutual Favorites</a></li>
+
+</ul>
+</li>
+<li class="dropdown last"><a href="https://www.christiandatingforfree.com/mchat/" class="dropdown-toggle" data-toggle="dropdown">Chat<span class="caret"></span></a>
+<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+<li><a href="https://www.christiandatingforfree.com/login.php?dest=chat">Live Chat</a></li>
+<li><a href="https://www.christiandatingforfree.com/forum/forum_cat.php">Forums</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+<noscript>
+<tr class="bg3"><td height="28" colspan="2" align="center" valign="center" class="error_bold" >Please enable JavaScript. This website does not function properly without JavaScript enabled.</td></tr></noscript>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+	$('ul.nav li.dropdown').hover(function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeIn(500);
+	}, function() {
+	  $(this).find('.dropdown-menu').stop(true, true).delay(100).fadeOut(500);
+	});
+</script>
+</header>
+<link href="https://www.christiandatingforfree.com/html5/app_view.css?v=3" rel="stylesheet" type="text/css" media="screen" />
+<link href="https://www.christiandatingforfree.com/html5/custom1.css?v=5" rel="stylesheet" type="text/css" media="screen" />
+<script src="https://www.christiandatingforfree.com/public/js/view_profile.min.js" type="5e6add5ed34cd809bb979a29-text/javascript" language="javascript"></script>
+<style type="text/css">
+  .profile_btn_section .align_button a{
+    float: right;
+}
+  .user_profiles .online-user {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    display: inline-block;
+    top: 0px;
+    background-color: #8bf772;
+    border-radius: 100px;
+}
+.user_profiles .online-today {
+    width: 14px;
+    height: 14px;
+    position: relative;
+    display: inline-block;
+    top: 0px;
+    background-color: #ecdb5e;
+    border-radius: 100px;
+    margin-left: 5px;
+}
+</style>
+<main class="res_view">
+<div class='hide_mob'>
+</div>
+<section class="top_gallery">
+<div class='clearfix text-center'>
+<div class='clearfix text-center sectionspace'>
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=3313508">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/1016/75x/u_id_3313508__75x75__distort__20201016185506__%28%7C%29usr%403313508%402020-10-16%28%7C%296b4158cc6c4d75fdf40b4b34228e6975.jpg" alt="realsa" class="userpic-border" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=3310015">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/1013/75x/u_id_3310015__75x75__distort__20201013132113__%28%7C%29usr%403310015%402020-10-13%28%7C%29e06a2e9763191af9f892d5b1986aa2f3.jpg" alt="Dmonroe2" class="userpic-border" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=3277423">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0914/75x/u_id_3277423__75x75__distort__20200914195247__%28%7C%29usr%403277423%402020-09-14%28%7C%29364429b7d467ff4e407aea1793de30a7.jpg" alt="Bel1992" class="userpic-border" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=3296437">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/1002/75x/u_id_3296437__75x75__distort__20201002053944__%28%7C%29usr%403296437%402020-10-02%28%7C%29ef4817f5d9b44ff05348f2db059dd8cb.jpg" alt="Brichmond" class="userpic-border" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=2962242">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0127/75x/u_id_2962242__75x75__distort__20200127181708__%28%7C%29usr%402962242%402020-01-27%28%7C%292ef705d54d767b80ca860f5bdf36b3ad.jpg" alt="ChristinaJ11" class="userpic-border" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=3274059">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0912/75x/u_id_3274059__75x75__distort__20200912043402__%28%7C%29usr%403274059%402020-09-12%28%7C%297460b47a8e8c7506f1b7af9c57ee84bf.jpg" alt="klovervil" class="userpic-border" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=2186494">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2018/1008/75x/u_id_2186494__75x75__distort__20190526073731__%28%7C%29usr%402186494%402018-10-08%28%7C%29db87d68c49931727f11aef4cf3230e09.jpg" alt="Godgirlforever2018" class="userpic-border" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+ <a href="https://www.christiandatingforfree.com/view_profile.php?userid=2960034">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0126/75x/u_id_2960034__75x75__distort__20200126043117__%28%7C%29usr%402960034%402020-01-26%28%7C%29772601aa119e3cb012202abf78dde9d7.jpg" alt="NovanoidMusic" class="userpic-border" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=2963346">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0421/75x/u_id_2963346__75x75__distort__20200421144313__%28%7C%29usr%402963346%402020-04-21%28%7C%297beee9d64f4dc8d7d6113609b4dc6818.jpg" alt="samkraft" class="userpic-border" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+</div>
+</div>
+</section>
+
+<section>
+<input name="u_img_userid" type="hidden" value="" />
+</section>
+<section class="sectionspace">
+<ul class="breadcrumb hide_mob">
+<li itemprop="child" itemscope itemtype=""><a href="http://www.christiandatingforfree.com/countries/all" itemprop="url"><span itemprop="title">All</span></a></li>
+<li itemscope itemtype="">
+<a href="https://www.christiandatingforfree.com/search/United-States.html?u_country=1&target=provinces" itemprop="url">
+<span itemprop="title">United States</span>
+</a>
+</li>
+<li itemscope itemtype="">
+<a href="https://www.christiandatingforfree.com/search/Michigan.html?u_country=1" itemprop="url">
+<span itemprop="title">Michigan</span>
+</a>
+</li>
+<li itemscope itemtype="">
+<a href="https://www.christiandatingforfree.com/search/Michigan/Detroit.html?u_country=1" itemprop="url">
+<span itemprop="title">Detroit</span>
+</a>
+</li>
+ <li itemscope itemtype="">
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=3240819&pind=1" itemprop="url">
+<span itemprop="title">Lanina</span>
+</a>
+</li>
+</ul>
+<section class="profile_btn_section hide_mob">
+<div class="row">
+<div class="col-xs-6"></div> <div class="col-xs-6 align_button"><a class="button color2" href="https://www.christiandatingforfree.com/view_profile.php?userid=3321659">Next Profile</a></div> </div>
+</section>
+<section class="tabdiv tab_appview">
+<div class="tablink hide_desktop">
+<a class="profilelist active" href="https://www.christiandatingforfree.com/view_profile.php?userid=3240819&frm=hml" class="active">Profile</a>
+<a class="photolist" href="javascript:void(0);">Photo</a>
+</div>
+<div class="user_profiles">
+<div class="profiles_row">
+<div class="row">
+<div class="col-xs-6 text-center">
+<figure class="user-large-pic">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815172434__%28%7C%29usr%403240819%402020-08-15%28%7C%29a97a2ee88342986010dd87ebb042a9be.jpg" border="0" id="MP" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet_300_size.png'" />
+</figure>
+</div>
+<div class="col-xs-6">
+<div class="profiles_info_head">
+<h3>Lanina</h3>
+<p>Jesus LOVES you</p>
+</div>
+<div class="table_profiles">
+<div class="whitelinebox responsive_block">
+<dl>
+<dd>Gender</dd>
+<dt>Female<span>
+| 23 </span>
+</dt>
+</dl>
+<dl>
+<dd>Country</dd>
+<dt>
+United States </dt>
+</dl>
+<dl>
+<dd>City</dd>
+<dt>
+Detroit </dt>
+</dl>
+<dl>
+<dd>State</dd>
+<dt>
+Michigan </dt>
+</dl>
+<dl>
+<dd>Height</dd>
+<dt>5&#039;4&quot;</dt>
+</dl>
+<dl>
+<dd>Last Login Date</dd>
+<dt><a href="https://www.christiandatingforfree.com/ad_free_cdff.php" rel="nofollow" class="button color3 pull-left btnsmall"> Click here to learn more </a></dt>
+</dl>
+</div>
+</div>
+
+<div class="row feature_row">
+<div class="col-sm-6 col-xs-12">
+
+<div class="user-status">
+<a href="https://www.christiandatingforfree.com/login.php?dest=mail_inbox&u_id=3240819&frm=profile"><span class="chat_icon"></span></a>
+<a href="https://www.christiandatingforfree.com/login.php?dest=wink_popup&u_id=3240819"><span class="eye_icon"></span></a>
+<a href="https://www.christiandatingforfree.com/login.php?dest=favorites_add&userid=3240819"><span class="star_icon"></span></a>
+
+</div>
+
+</div>
+<div class="col-sm-6 col-xs-12 hide_relative hide_mob">
+<a href="http://www.christiandatingforfree.com/basic_search.php?u_seeking=Female&age_from=18&age_to=26&u_country=" rel="nofollow" class="button back_btn">Back to Search Result</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+<div class="col-sm-6">
+<div class="thumb_user">
+<div class="small-user-pic">
+<a href="#">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/75x/u_id_3240819__75x75__distort__20200815171833__%28%7C%29usr%403240819%402020-08-15%28%7C%290bcd9bb5ce0653afba556eb5faf17287.jpg" border="0" class="userpic-border" width="75" height="75" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<div class="tooltip-img">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815171833__%28%7C%29usr%403240819%402020-08-15%28%7C%290bcd9bb5ce0653afba556eb5faf17287.jpg" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet_300_size.png'" />
+</div>
+</div>
+ <div class="small-user-pic">
+<a href="#">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/75x/u_id_3240819__75x75__distort__20200815172314__%28%7C%29usr%403240819%402020-08-15%28%7C%29d011e030bc75724e8433c34df71d5d78.jpg" border="0" class="userpic-border" width="75" height="75" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<div class="tooltip-img">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815172314__%28%7C%29usr%403240819%402020-08-15%28%7C%29d011e030bc75724e8433c34df71d5d78.jpg" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet_300_size.png'" />
+</div>
+</div>
+<div class="small-user-pic">
+<a href="#">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/75x/u_id_3240819__75x75__distort__20200815172434__%28%7C%29usr%403240819%402020-08-15%28%7C%29a97a2ee88342986010dd87ebb042a9be.jpg" border="0" class="userpic-border" width="75" height="75" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<div class="tooltip-img">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815172434__%28%7C%29usr%403240819%402020-08-15%28%7C%29a97a2ee88342986010dd87ebb042a9be.jpg" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet_300_size.png'" />
+</div>
+</div>
+<div class="small-user-pic">
+<a href="#">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/75x/u_id_3240819__75x75__distort__20200906230117__%28%7C%29usr%403240819%402020-08-15%28%7C%292ae48956703c5984f5b8fa480ab5dca8.jpg" border="0" class="userpic-border" width="75" height="75" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<div class="tooltip-img">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200906230117__%28%7C%29usr%403240819%402020-08-15%28%7C%292ae48956703c5984f5b8fa480ab5dca8.jpg" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet_300_size.png'" />
+</div>
+</div>
+<div class="small-user-pic">
+<a href="#">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/75x/u_id_3240819__75x75__distort__20200906230153__%28%7C%29usr%403240819%402020-08-15%28%7C%2960b850c08a77b98c4b6e6899888f093f.jpg" border="0" class="userpic-border" width="75" height="75" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet.png'">
+</a>
+<div class="tooltip-img">
+<script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49"></script><img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200906230153__%28%7C%29usr%403240819%402020-08-15%28%7C%2960b850c08a77b98c4b6e6899888f093f.jpg" onerror="this.src='https://pics.christiandatingforfree.com/cdff/public/images/female_no_photo_yet_300_size.png'" />
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</section>
+<section style="padding-top:10px;">
+<div class="googleads_desktop" style="width: 100%; float: left;">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="5e6add5ed34cd809bb979a29-text/javascript"></script>
+<ins class="adsbygoogle" style="display:inline-block;width:928px;height:250px" data-ad-client="ca-pub-4427896316517083" data-ad-slot="2454262444"></ins>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+	(adsbygoogle = window.adsbygoogle || []).push({});
+	</script>
+</div>
+</td>
+</section>
+
+<div class='profile_imglist'>
+<img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815171833__%28%7C%29usr%403240819%402020-08-15%28%7C%290bcd9bb5ce0653afba556eb5faf17287.jpg" />
+<img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815172314__%28%7C%29usr%403240819%402020-08-15%28%7C%29d011e030bc75724e8433c34df71d5d78.jpg" />
+<img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815172434__%28%7C%29usr%403240819%402020-08-15%28%7C%29a97a2ee88342986010dd87ebb042a9be.jpg" />
+<img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200906230117__%28%7C%29usr%403240819%402020-08-15%28%7C%292ae48956703c5984f5b8fa480ab5dca8.jpg" />
+<img src="https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200906230153__%28%7C%29usr%403240819%402020-08-15%28%7C%2960b850c08a77b98c4b6e6899888f093f.jpg" />
+</div>
+<div class="user_detail">
+<div class="row">
+<div class="col-sm-4">
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title"> <a data-toggle="collapse" href="#collapse1">Basic</a> </h4>
+</div>
+<div id="collapse1" class="panel-collapse collapse in">
+<div class="table_profiles">
+<div class="whitelinebox responsive_block control_spacing">
+<dl>
+<dd>Age</dd>
+<dt>23</dt>
+</dl>
+<dl>
+<dd>Eye Color</dd>
+<dt>Brown</dt>
+</dl>
+<dl>
+<dd>Body Type</dd>
+ <dt>Slender</dt>
+</dl>
+<dl>
+<dd>Hair Color</dd>
+<dt>Black</dt>
+</dl>
+<dl>
+<dd>Ethnicity</dd>
+<dt>
+African American </dt>
+</dl>
+<dl>
+<dd>Denomination</dd>
+<dt>
+Christian Reformed
+</dt>
+</dl>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="googleads_mobview">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="5e6add5ed34cd809bb979a29-text/javascript"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4427896316517083" data-ad-slot="9139480502" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="col-sm-4">
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title"> <a data-toggle="collapse" href="#collapse2">Looking For</a> </h4>
+</div>
+<div id="collapse2" class="panel-collapse collapse in">
+<div class="table_profiles">
+<div class="whitelinebox responsive_block control_spacing">
+<dl>
+<dd>Looking For</dd>
+<dt>A Long Term Relationship</dt>
+</dl>
+<dl>
+<dd>Church Name</dd>
+<dt>Word Of Faith international Christian center</dt>
+</dl>
+<dl>
+<dd>Church Attendance</dd>
+<dt>Every week</dt>
+</dl>
+<dl>
+<dd>Church Raised In</dd>
+<dt></dt>
+</dl>
+<dl>
+<dd>Do you drink?</dd>
+<dt>No</dt>
+</dl>
+<dl>
+<dd>Smoker</dd>
+<dt>No</dt>
+</dl>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="col-sm-4">
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title"> <a data-toggle="collapse" href="#collapse3">Marital Status</a> </h4>
+</div>
+<div id="collapse3" class="panel-collapse collapse in">
+<div class="table_profiles">
+<div class="whitelinebox responsive_block control_spacing">
+<dl>
+<dd>Willing to relocate?</dd>
+<dt>Sure, why not</dt>
+</dl>
+<dl>
+<dd>Marital Status</dd>
+<dt>Single</dt>
+ </dl>
+<dl>
+<dd>Do you have children?</dd>
+<dt>Yes</dt>
+</dl>
+<dl>
+<dd>Do you want children?</dd>
+<dt>Want Children</dt>
+</dl>
+<dl>
+<dd>Education Level</dd>
+<dt>HS Graduate</dt>
+</dl>
+<dl>
+<dd>My Profession</dd>
+<dt>Helping People Get Closer God</dt>
+</dl>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+
+
+<div class="googleads_mobview">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="5e6add5ed34cd809bb979a29-text/javascript"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4427896316517083" data-ad-slot="9139480502" data-ad-format="auto" data-full-width-responsive="true"></ins>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+<div class="table_profiles_2 user_detail">
+<div class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<h4 class="panel-title"> <a data-toggle="collapse" href="#collapse4">Interests</a> </h4>
+</div>
+<div id="collapse4" class="panel-collapse collapse in">
+<div class="whitelinebox2 responsive_block control_spacing clearfix">
+<dl>
+<dt>Interests</dt>
+<dd>Men</dd>
+</dl>
+<dl>
+<dt>About Me</dt>
+<dd>
+I&#039;m a God-fearing woman that&#039;s loving caring and love helping people 😁💖💯
+</dd>
+</dl>
+<dl>
+<dt>First Date</dt>
+<dd>Take long walks by the beach or River</dd>
+</dl>
+<dl>
+<dt>Account Settings (To message Lanina you must meet the following criteria.)</dt>
+<br>
+<dd>Age between 22 to 28.</dd> <dd>Must not Smoke.</dd> <dd>Must not Drink.</dd> <dd>Appears on 11 members favorites lists</dd>
+</dl>
+<dt></dt>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<style>
+    @media(max-width:767px){
+    .profile_breadcrumb{
+      margin:0 0 10px 0 !important;
+    }
+    .profile_breadcrumb li a {
+      padding: 3px 7px 3px 5px !important;
+      }
+    }
+    </style>
+<ul class="breadcrumb hide_desktop profile_breadcrumb">
+<li itemprop="child" itemscope itemtype=""><a href="http://www.christiandatingforfree.com/countries/all" itemprop="url"><span itemprop="title">All</span></a></li>
+<li itemscope itemtype="">
+<a href="https://www.christiandatingforfree.com/search/United-States.html?u_country=1&target=provinces" itemprop="url">
+<span itemprop="title">United States</span>
+</a>
+</li>
+<li itemscope itemtype="">
+<a href="https://www.christiandatingforfree.com/search/Michigan.html?u_country=1" itemprop="url">
+<span itemprop="title">Michigan</span>
+ </a>
+</li>
+<li itemscope itemtype="">
+<a href="https://www.christiandatingforfree.com/search/Michigan/Detroit.html?u_country=1" itemprop="url">
+<span itemprop="title">Detroit</span>
+</a>
+</li>
+<li itemscope itemtype="">
+<a href="https://www.christiandatingforfree.com/view_profile.php?userid=3240819&pind=1" itemprop="url">
+<span itemprop="title">Lanina</span>
+</a>
+</li>
+</ul>
+<div class="clearfix text-center sectionspace"> </div>
+<div class="clearfix text-center sectionspace">
+<p> Send an <a href="https://www.christiandatingforfree.com/login.php?dest=ban_request&ban_userid=3240819&ban_username=Lanina" rel="nofollow"> abuse report </a> regarding Lanina's Language, Images or other account details </p>
+<p class="text-color2"><strong>If you suspect this member is a SCAMMER or is being deceitful <a href="https://www.christiandatingforfree.com/login.php?dest=scammer&ban_userid=3240819&ban_username=Lanina" rel="nofollow"> PLEASE CLICK HERE </a> and let us know so that we can check them out </strong> </p>
+</div>
+</section>
+<section>
+</section>
+</main>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+$(".photolist").click(function(){
+  $(".profile_imglist").slideToggle('slow');
+  $(".photolist").addClass("active");
+  $(".profilelist").removeClass("active");
+});
+</script>
+<footer>
+<div class="social-media">
+<div class="row">
+<div class="col-sm-8  social-media-left"> <span>Create your profile today.. </span><a href="registration.php" class="heighlight_link">Sign up today, it's free</a> <span>Its fast and effortless.</span></div>
+<div class="col-sm-4  social-media-right">
+<a href="https://www.facebook.com/FreeChristianDating" class="facebook" target="_blank"></a>
+<a href="https://twitter.com/intent/follow?source=followbutton&variant=1.0&screen_name=datingforfree" class="twitter" target="_blank"></a>
+<a href="https://plus.google.com/+Christiandatingforfree1/posts" class="google" target="_blank"></a><a href="https://www.pinterest.com/christiandating/" class="pinterest" target="_blank"></a>
+<a href="https://instagram.com/freechristiandating/" class="instagram" target="_blank"></a>
+</div>
+</div>
+</div>
+<div class=" facebook-signup">
+<div class="row">
+<div class="col-md-5 facebook-signup-left">
+<span>Or get started quickly through Facebook! </span>
+<div class="fb_sign">
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+                window.fbAsyncInit = function() {
+                    FB.init({
+                        appId : 434781160188866,
+                        status : true,
+                        cookie : true,
+                        xfbml : true
+                    });
+                };
+
+                (function(d){
+                    var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+                    if (d.getElementById(id)) {return;}
+                    js = d.createElement('script'); js.id = id; js.async = true;
+                    js.src = "//connect.facebook.net/en_US/all.js";
+                    ref.parentNode.insertBefore(js, ref);
+                }(document));
+
+                function fb_conn_login(){
+                    FB.getLoginStatus(function(response){
+                            if (response.status === 'connected') {
+                                //window.location.href = 'facebook_login.php?uid='+response.authResponse.userID;
+                                fb_login();
+                            } else if (response.status === 'not_authorized') {
+                                fb_login();
+                            } else {
+                                fb_login();
+                            }
+                    });
+                }
+
+                function fb_login(){
+                    FB.login(function(response){
+                        if (response.authResponse) {
+                            FB.api('/me', function (response) {
+                                window.location.href = 'facebook_login.php?uid=' + response.id;
+                                //if(response.verified){.. }//
+                            });
+                        } else {
+                            window.location.href = 'facebook_login.php?error=unknow';
+                        }
+                    },
+                    {scope: "public_profile,email,user_birthday,user_location,user_photos"});
+                }
+            </script> <input type="image" name="fb_connect_login" id="fb_connect_login" src="https://pics.christiandatingforfree.com/cdff/public/images/sign_up_new.png" class="img-responsive fb-image" onclick="if (!window.__cfRLUnblockHandlers) return false; fb_conn_login();" data-cf-modified-5e6add5ed34cd809bb979a29-="" />
+</div>
+</div>
+<div class="col-md-7 facebook-signup-right">
+<div class="footer_app cleafix">
+<a href="https://play.google.com/store/apps/details?id=cdff.mobileapp" target="_blank">
+<img class="img-responsive" src="https://pics.christiandatingforfree.com/cdff/public/images/GooglePlayNew.png">
+</a>
+<a href="https://itunes.apple.com/us/app/christian-dating-for-free/id625001689" target="_blank">
+<img class="img-responsive" src="https://pics.christiandatingforfree.com/cdff/public/images/AppStoreNew.png">
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="footer-link">
+<div class="clearfix">
+<a href="https://www.christiandatingforfree.com">Home</a><span>.</span>
+<a href="https://www.christiandatingforfree.com/aboutus.php">About Us</a><span>.</span>
+<a href="https://www.christiandatingforfree.com/faq.php">Help/FAQ</a><span>.</span>
+<a href="https://www.christiandatingforfree.com/testimonials.php">Testimonials</a><span>.</span>
+<a href="https://www.christiandatingforfree.com/countries/all">Browse by Location</a><span>.</span>
+<a href="https://www.christiandatingforfree.com/contactus.php">Contact Us</a> <span>.</span>
+<a href="https://www.christiandatingforfree.com/terms.php">Terms of service</a> <span>.</span>
+ <a href="https://www.christiandatingforfree.com/privacy_policy.php">Privacy Policy</a>
+<span>.</span>
+<a href="https://www.christiandatingforfree.com/christian-affiliate-program.php">Affiliates</a>
+</div>
+</div>
+<div class="copyright">
+<div class="clearfix copy-text">
+<p>
+<a href="donate.php" class="btn1">Donate</a> Thank you for helping keep CDFF free for Christian Singles!
+</p>
+<p><span>Copyright 2006-2020 E Dating for Free, Inc.. All rights reserved.</span></p>
+</div>
+</div>
+</footer>
+</div>
+<div class="googleads_300">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="5e6add5ed34cd809bb979a29-text/javascript"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-4427896316517083" data-ad-slot="5677599951"></ins>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="5e6add5ed34cd809bb979a29-text/javascript"></script>
+
+<ins class="adsbygoogle" style="display:inline-block;width:336px;height:280px" data-ad-client="ca-pub-4427896316517083" data-ad-slot="6851968871"></ins>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+<div id="getFixed">
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" type="5e6add5ed34cd809bb979a29-text/javascript"></script>
+
+<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-4427896316517083" data-ad-slot="3038337635" data-ad-format="auto"></ins>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+</div>
+</div>
+</div>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+	(function() {
+	var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	po.src = 'https://apis.google.com/js/plusone.js';
+	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	})();
+	</script>
+<script src="https://www.christiandatingforfree.com/public/js/common.min.js" type="5e6add5ed34cd809bb979a29-text/javascript" language="javascript"></script>
+<script src="https://www.christiandatingforfree.com/public/js/bootstrap.min.js" language="javascript" type="5e6add5ed34cd809bb979a29-text/javascript"></script>
+
+<script src="https://www.christiandatingforfree.com/public/js/view_profile.min.js" type="5e6add5ed34cd809bb979a29-text/javascript" language="javascript"></script>
+<script type="5e6add5ed34cd809bb979a29-text/javascript" language="javascript">
+        set_login_common_error_msg('The following errors occured:');
+        set_login_username_msg('Please enter username.');
+        set_login_password_msg('Please enter password.');
+        set_login_session_login_attempts_count('');
+        set_login_captcha_code_msg('Please enter security code.');
+        set_login_attempts_for_captcha_display('3');
+    </script>
+
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-2896444-1']);
+  _gaq.push(['_setDomainName', 'christiandatingforfree.com']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script><script type="5e6add5ed34cd809bb979a29-text/javascript">
+//============== fixed Add section ==================
+var $cache = $('#getFixed');
+var vTop = $cache.offset().top - parseFloat($cache.css('margin-top').replace(/auto/, 0));
+  $(window).scroll(function (event) {
+    var y = $(this).scrollTop();
+    if (y >= vTop) {
+      $cache.addClass('stuck');
+    } else {
+      $cache.removeClass('stuck');
+    }
+  });
+</script>
+<script type="5e6add5ed34cd809bb979a29-text/javascript">
+$(document).ready(function() {
+$('#select_blocked_user').click(function(e){
+    var table= $(e.target).closest('table');
+    $('td input:checkbox',table).attr('checked',e.target.checked);
+});
+socit();
+});
+</script>
+
+<script type="5e6add5ed34cd809bb979a29-text/javascript">window.NREUM||(NREUM={});NREUM.info={"beacon":"bam-cell.nr-data.net","licenseKey":"ea5e69dd0b","applicationID":"75608222","transactionName":"blNSMUVZCkZVVUNZXVcZZRdeFxJcUUFoQEBWUFkJUhYUXUQ=","queueTime":0,"applicationTime":169,"atts":"QhRRRw1DGUg=","errorBeacon":"bam-cell.nr-data.net","agent":""}</script><script src="https://ajax.cloudflare.com/cdn-cgi/scripts/7089c43e/cloudflare-static/rocket-loader.min.js" data-cf-settings="5e6add5ed34cd809bb979a29-|49" defer=""></script></body>
+</html>

@@ -158,7 +158,7 @@ with_children_to_enum_mapping = {
 
 relocation_to_enum_mapping = {
     'No way': WillingToRelocate.noWay,
-    'Sure, who not': WillingToRelocate.sureWhyNot,
+    'Sure, why not': WillingToRelocate.sureWhyNot,
     'Possibly, who knows': WillingToRelocate.possiblyWhoKnows,
 }
 

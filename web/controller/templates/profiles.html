@@ -157,8 +157,8 @@
          }
          {% endif %}
 
-         {% if search_criteria.getlist('onlyWithPhotos') %}
-         form.elements['onlyWithPhotos'].checked = true;
+         {% if search_criteria.getlist('onlyWithImages') %}
+         form.elements['onlyWithImages'].checked = true;
          {% endif %}
       }
 
@@ -761,9 +761,9 @@
                <div class="form-group row">
                   <div class="form-check">
                      <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="onlyWithPhotos" name="onlyWithPhotos">
-                        <label class="form-check-label" for="onlyWithPhotos">Only show results of members with
-                           photos</label>
+                        <input type="checkbox" class="form-check-input" id="onlyWithImages" name="onlyWithImages">
+                        <label class="form-check-label" for="onlyWithImages">Only show results of members with
+                           images</label>
                      </div>
                   </div>
                </div>
@@ -802,8 +802,8 @@
             <li class="list-group-item">
                <div class="row">
                   <div class="col">
-                     {% for photoUrl in p.photo_urls_list %}
-                     <img src="{{photoUrl}}" height="160">
+                     {% for imageUrl in p.image_urls_list %}
+                     <img src="{{imageUrl}}" height="160">
                      {% endfor %}
                   </div>
                   <div class="col">

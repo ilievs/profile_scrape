@@ -42,56 +42,64 @@ def get_height_cm(feet_inches_str):
 
 def parse_profile_page(url, page_html):
     tree = BeautifulSoup(page_html, 'html.parser')
-    sections = tree.select('#wrapper div.maincontainer main section.sectionspace')
-    if not sections:
-        raise ValueError('Account deleted, not activated, or non-existent:', url)
 
-    profile_container = sections[0]
-    first_dts = profile_container.select('div.row:nth-of-type(1) dt')
-    values = [dt.text.strip() for dt in first_dts]
+    # get all sections
+    top_section = tree.select('section.tabdiv')[0]
+    details_section, bottom_section = tree.select('.user_detail')
+    left_section, middle_section, right_section = details_section.select('.col-sm-4')
 
-    second_values = [dt.text
-                     for boxes in tree.select('div.whitelinebox.responsive_block')[2:]
-                     for dt in boxes.select('dt')]
+    top_section_values = [dt.text.strip() for dt in top_section.select('dt')]
+    left_section_values = [dt.text.strip() for dt in left_section.select('dt')]
+    middle_section_values = [dt.text.strip() for dt in middle_section.select('dt')]
+    right_section_values = [dt.text.strip() for dt in right_section.select('dt')]
+    bottom_section_values = [dd.text for dd in bottom_section.select('dd')]
 
-    additional_texts = [dd.text.strip() for dd in tree.select('.whitelinebox2.responsive_block.clearfix dd')]
-    interests = additional_texts[0] if additional_texts[0] != '' else None
-    about_me = additional_texts[1] if additional_texts[1] != '' else None
-    first_date = additional_texts[2] if additional_texts[2] != '' else None
-    account_settings_criteria = additional_texts[3] if additional_texts[3] != '' else None
+    gender_age = top_section_values[0].split('|')
+    gender, age = value_mappers.get_gender(gender_age[0].strip()), int(gender_age[1])
 
-    profile = Profile(
-        url=url,
-        gender=value_mappers.get_gender(values[0]),
-        country=values[1],
-        city=values[2],
-        state=values[3],
-        height_cm=get_height_cm(values[4]),
-        age=int(values[6]),
-        eye_color=value_mappers.get_eye_color(values[7]),
-        body_type=value_mappers.get_body_type(values[8]),
-        hair_color=value_mappers.get_hair_color(values[9]),
-        ethnicity=value_mappers.get_ethnicity(values[10]),
-        denomination=value_mappers.get_denomination(values[11]),
-        photo_urls='|'.join([img['src'] for img in tree.select('div.tooltip-img img')]),
-        looking_for=value_mappers.get_looking_for(second_values[0]),
-        church_name=second_values[1],
-        church_attendance=value_mappers.get_church_attendance(second_values[2]),
-        church_raised_in=second_values[3],
-        drink=value_mappers.get_drink(second_values[4]),
-        smoke=value_mappers.get_smoke(second_values[5]),
-        willing_to_relocate=value_mappers.get_willing_to_relocate(second_values[6]),
-        marital_status=value_mappers.get_marital_status(second_values[7]),
-        have_children=value_mappers.get_user_with_children(second_values[8]),
-        want_children=value_mappers.get_user_wants_children(second_values[9]),
-        education_level=value_mappers.get_education_level(second_values[10]),
-        profession=second_values[11],
-        interests=interests,
-        about_me=about_me,
-        first_date=first_date,
-        account_settings_criteria=account_settings_criteria)
+    profiles_info_head = top_section.select('.profiles_info_head')[0]
 
-    return profile
+    # general info
+    profile_data = {
+        'url': url,
+        'name': profiles_info_head.select('h3')[0].text,
+        'description': profiles_info_head.select('p')[0].text,
+        'gender': gender,
+        'age': age,
+        'country': top_section_values[1],
+        'city': top_section_values[2],
+        'state': top_section_values[3],
+        'height': get_height_cm(top_section_values[4]),
+        'image_urls': '|'.join([img.attrs['src']
+                                for img in top_section.select('div.tooltip-img img')]),
+        # left section
+        'eye_color': value_mappers.get_eye_color(left_section_values[1]),
+        'body_type': value_mappers.get_body_type(left_section_values[2]),
+        'hair_color': value_mappers.get_hair_color(left_section_values[3]),
+        'ethnicity': value_mappers.get_ethnicity(left_section_values[4]),
+        'denomination': value_mappers.get_denomination(left_section_values[5]),
+        # middle section
+        'looking_for': value_mappers.get_looking_for(middle_section_values[0]),
+        'church_name': middle_section_values[1],
+        'church_attendance': value_mappers.get_church_attendance(middle_section_values[2]),
+        'church_raised_in': middle_section_values[3],
+        'drink': value_mappers.get_drink(middle_section_values[4]),
+        'smoke': value_mappers.get_smoke(middle_section_values[5]),
+        # right section
+        'willing_to_relocate': value_mappers.get_willing_to_relocate(right_section_values[0]),
+        'marital_status': value_mappers.get_marital_status(right_section_values[1]),
+        'have_children': value_mappers.get_user_with_children(right_section_values[2]),
+        'want_children': value_mappers.get_user_wants_children(right_section_values[3]),
+        'education_level': value_mappers.get_education_level(right_section_values[4]),
+        'profession': right_section_values[5],
+        # bottom section
+        'interests': bottom_section_values[0],
+        'about_me': bottom_section_values[1].strip(),
+        'first_date': bottom_section_values[2],
+        'account_settings_criteria': '|'.join(bottom_section_values[3:]),
+    }
+
+    return Profile(**profile_data)
 
 
 def get_profile_links(result_page_html):
@@ -110,6 +118,7 @@ def get_countries():
 
     tree = BeautifulSoup(r.text, 'html.parser')
     return {opt['value']: opt.text for opt in tree.select('#u_country option')}
+
 
 def build_url(url, params):
 
