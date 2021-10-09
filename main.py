@@ -1,9 +1,9 @@
-import argparse
-
-import web.controller.profile_controller as pweb
-import scrape.profile_scrape as pscrape
-
 if __name__ == '__main__':
+    import argparse
+
+    import web.controller.profile_controller as pweb
+    import scrape.profile_scrape as pscrape
+
     parser = argparse.ArgumentParser(description='Profile_scrape command line tool')
     subparsers = parser.add_subparsers(title='commands',
                                        help='[command] help')

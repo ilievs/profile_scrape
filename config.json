@@ -1,3 +1,3 @@
 {
-  "db_url": "mysql+mysqlconnector://scrape:scrape@localhost:3306/scrape"
+  "db_url": "mysql+mysqlconnector://moblytics:moblytics@localhost:3306/moblytics"
 }

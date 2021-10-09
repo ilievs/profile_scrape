@@ -1,17 +1,17 @@
-version: "3.7"
+version: "3.8"
 services:
   profile-scrape-db:
     container_name: profile-scrape-db
-    image: mysql:8.0.22
+    image: mysql:8.0.26
     ports:
       - 3306:3306
     volumes:
-      - profile-scrape-db-data:/var/lib/mysql
+      - profile-scrape-vol:/var/lib/mysql
     environment:
-      - MYSQL_ROOT_PASSWORD=scrape
-      - MYSQL_USER=scrape
-      - MYSQL_PASSWORD=scrape
-      - MYSQL_DATABASE=scrape
+      MYSQL_ROOT_PASSWORD: 11
+      MYSQL_USER: moblytics
+      MYSQL_PASSWORD: moblytics
+      MYSQL_DATABASE: moblytics
 
 volumes:
-  profile-scrape-db-data:
+  profile-scrape-vol:
