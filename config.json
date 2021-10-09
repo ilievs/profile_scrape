@@ -1,3 +1,3 @@
 {
-  "db_url": "sqlite:///profile_scrape.db"
+  "db_url": "mysql+mysqlconnector://moblytics:moblytics@localhost:3306/moblytics"
 }

@@ -1,12 +1,13 @@
 import urllib.parse
 import os
 import subprocess
+import json
 
 from werkzeug.exceptions import BadRequest
 from flask import Flask, request, render_template
 
 from sqlalchemy import create_engine, or_
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import sessionmaker, Bundle
 
 from model.profile import *
 from collections import OrderedDict
@@ -54,28 +55,6 @@ user_with_children_name_to_display_name = {lf.name: uncamel(lf.name) for lf in l
 willing_to_relocate_name_to_display_name = {lf.name: uncamel(lf.name) for lf in list(WillingToRelocate) if lf.name != 'undefined'}
 
 
-def get_search_criteria_meta():
-
-    search_criteria_meta = OrderedDict()
-    for c in Profile.__table__.columns:
-        field_criteria_meta = {
-            'type': c.type.__visit_name__
-        }
-
-        try:
-            field_criteria_meta['validValues'] = [m for m in c.type.python_type.__members__]
-        except AttributeError:
-            pass
-
-        search_criteria_meta[c.name] = field_criteria_meta
-
-    search_criteria_meta['keywords'] = {
-        'type': 'text'
-    }
-
-    return search_criteria_meta
-
-
 def get_pagination_links(url, start, size):
     url_parts = urllib.parse.urlparse(url)
 
@@ -102,8 +81,45 @@ def get_pagination_links(url, start, size):
 
 
 @app.route('/', methods=['GET'])
+@app.route('/home', methods=['GET'])
 def get_home():
     return render_template('home.html')
+
+
+url_param_to_db_criteria = {
+    'gender': lambda gender: Profile.gender == Gender[gender[0]],
+    'country': lambda country: Profile.country == country[0],
+    'ageFrom': lambda age_from: Profile.age >= int(age_from[0]),
+    'ageTo': lambda age_to: Profile.age <= int(age_to[0]),
+    'heightFrom': lambda height_from: Profile.height_cm >= int(height_from[0]),
+    'heightTo': lambda height_to: Profile.height_cm <= int(height_to[0]),
+    'keywords': lambda keywords: or_(*[con for k in keywords[0].split(',')
+                                       for con in [Profile.profession.contains(k),
+                                                   Profile.interests.contains(k),
+                                                   Profile.about_me.contains(k),
+                                                   Profile.first_date.contains(k)]]),
+
+    'churchAttendance': lambda attendance_list: Profile.church_attendance == ChurchAttendance[attendance_list[0]],
+    'lookingFor': lambda looking_for_values: Profile.looking_for.in_([LookingFor[l] for l in looking_for_values]),
+    'drink': lambda drink_values: Profile.drink.in_([Drink[v] for v in drink_values]),
+    'smoke': lambda smoke_values: Profile.smoke.in_([Smoke[v] for v in smoke_values]),
+    'bodyType': lambda body_types: Profile.body_type.in_([BodyType[v] for v in body_types]),
+    'denomination': lambda denominations: Profile.denomination.in_([Denomination[v] for v in denominations]),
+    'educationLevel':
+        lambda education_levels: Profile.education_level.in_([EducationLevel[v] for v in education_levels]),
+
+    'ethnicity': lambda ethnicity_values: Profile.ethnicity.in_([Ethnicity[v] for v in ethnicity_values]),
+    'hairColor': lambda hair_colors: Profile.hair_color.in_([HairColor[v] for v in hair_colors]),
+    'eyeColor': lambda eye_colors: Profile.eye_color.in_([EyeColor[v] for v in eye_colors]),
+    'maritalStatus': lambda marital_status: Profile.marital_status.in_([MaritalStatus[v] for v in marital_status]),
+    'userWantsChildren':
+        lambda user_wants_children: Profile.want_children.in_([UserWantsChildren[v] for v in user_wants_children]),
+
+    'userWithChildren':
+        lambda user_with_children: Profile.have_children.in_([UserWithChildren[v] for v in user_with_children]),
+
+    'onlyWithPhotos': lambda only_with_photos: Profile.photo_urls != '' if only_with_photos[0] else None,
+}
 
 
 def get_query(db_session, search_criteria):
@@ -111,98 +127,13 @@ def get_query(db_session, search_criteria):
     db_criteria = []
 
     try:
+        for param_name, handler in url_param_to_db_criteria.items():
+            param_value = search_criteria.getlist(param_name)
+            if param_value:
+                db_criteria.append(handler(param_value))
 
-        genders = search_criteria.get('gender')
-        if genders:
-            db_criteria.append(Profile.gender == genders)
-
-        country = search_criteria.get('country')
-        if country:
-            db_criteria.append(Profile.country == country)
-
-        age_from = search_criteria.getlist('ageFrom', int)
-        if age_from:
-            db_criteria.append(Profile.age >= age_from[0])
-
-        age_to = search_criteria.getlist('ageTo', int)
-        if age_to:
-            db_criteria.append(Profile.age <= age_to[0])
-
-        height_from = search_criteria.getlist('heightFrom', int)
-        if height_from:
-            db_criteria.append(Profile.height_cm >= height_from[0])
-
-        height_to = search_criteria.getlist('heightTo', int)
-        if height_to:
-            db_criteria.append(Profile.height_cm <= height_to[0])
-
-        keywords = search_criteria.get('keywords')
-        if keywords:
-            conditions = [con for k in keywords.split(',')
-                          for con in [Profile.profession.contains(k),
-                                      Profile.interests.contains(k),
-                                      Profile.about_me.contains(k),
-                                      Profile.first_date.contains(k)]]
-
-            db_criteria.append(or_(*conditions))
-
-        church_attendance = search_criteria.get('churchAttendance')
-        if church_attendance:
-            db_criteria.append(Profile.church_attendance == church_attendance)
-
-        looking_for_values = search_criteria.getlist('lookingFor', LookingFor)
-        if looking_for_values:
-            db_criteria.append(Profile.looking_for.in_(looking_for_values))
-
-        drink_values = search_criteria.getlist('drink', Drink)
-        if drink_values:
-            db_criteria.append(Profile.drink.in_(drink_values))
-
-        smoke_values = search_criteria.getlist('smoke', Smoke)
-        if smoke_values:
-            db_criteria.append(Profile.smoke.in_(smoke_values))
-
-        body_types = search_criteria.getlist('bodyType', BodyType)
-        if body_types:
-            db_criteria.append(Profile.body_type.in_(body_types))
-
-        denominations = search_criteria.getlist('denomination', Denomination)
-        if denominations:
-            db_criteria.append(Profile.denomination.in_(denominations))
-
-        education_levels = search_criteria.getlist('educationLevel', EducationLevel)
-        if education_levels:
-            db_criteria.append(Profile.education_level.in_(education_levels))
-
-        ethnicity_values = search_criteria.getlist('ethnicity', Ethnicity)
-        if ethnicity_values:
-            db_criteria.append(Profile.ethnicity.in_(ethnicity_values))
-
-        hair_colors = search_criteria.getlist('hairColor', HairColor)
-        if hair_colors:
-            db_criteria.append(Profile.hair_color.in_(hair_colors))
-
-        eye_colors = search_criteria.getlist('eyeColor', EyeColor)
-        if eye_colors:
-            db_criteria.append(Profile.eye_color.in_(eye_colors))
-
-        marital_status = search_criteria.getlist('maritalStatus', MaritalStatus)
-        if marital_status:
-            db_criteria.append(Profile.marital_status.in_(marital_status))
-
-        user_wants_children = search_criteria.getlist('userWantsChildren', UserWantsChildren)
-        if user_wants_children:
-            db_criteria.append(Profile.want_children.in_(user_wants_children))
-
-        user_with_children = search_criteria.getlist('userWithChildren', UserWithChildren)
-        if user_with_children:
-            db_criteria.append(Profile.have_children.in_(user_with_children))
-
-        if search_criteria.get('onlyWithPhotos', None):
-            db_criteria.append(Profile.photo_urls != '')
-
-    except ValueError:
-        pass
+    except (ValueError, KeyError, TypeError):
+        raise BadRequest('Wrong param name or value detected')
 
     query = db_session.query(Profile)
 
@@ -266,16 +197,6 @@ def get_profiles():
                            willing_to_relocate_name_to_display_name=willing_to_relocate_name_to_display_name,
                            search_criteria=request.args)
 
-    # profile_dicts = [r.as_dict() for r in results]
-    #
-    # try:
-    #     for pd in profile_dicts:
-    #         pd['photo_urls'] = pd['photo_urls'].split('|')
-    # except LookupError:
-    #     pass
-    #
-    # return json.jsonify(profile_dicts)
-
 
 @app.route('/view_profile', methods=['GET'])
 def view_profile():
@@ -292,3 +213,50 @@ def view_profile():
 
     return render_template('view_profile.html', profile=profile)
 
+
+@app.route('/analytics_profiles', methods=['GET'])
+def get_all_profiles():
+
+    class DictBundle(Bundle):
+        def create_row_processor(self, query, procs, labels):
+            """Override create_row_processor to return values as dictionaries"""
+
+            def proc(row):
+                return dict(
+                    zip(labels, (proc(row) for proc in procs))
+                )
+
+            return proc
+
+    bn = DictBundle('bundle', Profile.gender,
+                    Profile.country,
+                    Profile.city,
+                    Profile.state,
+                    Profile.height_cm,
+                    Profile.age,
+                    Profile.eye_color,
+                    Profile.hair_color,
+                    Profile.body_type,
+                    Profile.ethnicity,
+                    Profile.denomination,
+                    Profile.looking_for,
+                    Profile.church_name,
+                    Profile.church_attendance,
+                    Profile.church_raised_in,
+                    Profile.drink,
+                    Profile.smoke,
+                    Profile.willing_to_relocate,
+                    Profile.marital_status,
+                    Profile.have_children,
+                    Profile.want_children,
+                    Profile.education_level,
+                    Profile.profession)
+
+    profiles = db_session.query(bn)
+
+    return json.dumps([p.bundle for p in profiles])
+
+
+@app.route('/analytics', methods=['GET'])
+def analytics_page():
+    return render_template('analytics.html')
