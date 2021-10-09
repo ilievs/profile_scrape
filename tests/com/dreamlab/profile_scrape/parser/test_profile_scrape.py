@@ -1,18 +1,22 @@
 import unittest
 
+from com.dreamlab.profile_scrape.parser.profile import ProfilePageParser
 from model.profile import *
-from scrape.profile_scrape import parse_profile_page
 
 
 class TestProfileScrape(unittest.TestCase):
 
     def test_normal_profile(self):
+
+        page_parser = ProfilePageParser()
+
         html_file_dir = '/'.join(__file__.split('/')[:-1]) + '/example_profile.html'
         with open(html_file_dir, 'rt', encoding='utf-8') as f:
-            url = 'https://www.christiandatingforfree.com/view_profile.php?userid=3240819&pind=2'
-            profile = parse_profile_page(url, f.read())
+            profile = page_parser.parse(f.read())
 
-            self.assertEqual(url, profile.url)
+            self.assertEqual('https://www.christiandatingforfree.com/view_profile.php?userid=3240819&pind=2',
+                             profile.url)
+
             self.assertEqual(Gender.female, profile.gender)
             self.assertEqual("United States", profile.country)
             self.assertEqual("Detroit", profile.city)
@@ -24,11 +28,26 @@ class TestProfileScrape(unittest.TestCase):
             self.assertEqual(HairColor.black, profile.hair_color)
             self.assertEqual(Ethnicity.africanAmerican, profile.ethnicity)
             self.assertEqual(Denomination.christianReformed, profile.denomination)
-            self.assertEqual('https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815171833__%28%7C%29usr%403240819%402020-08-15%28%7C%290bcd9bb5ce0653afba556eb5faf17287.jpg|'
-                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815172314__%28%7C%29usr%403240819%402020-08-15%28%7C%29d011e030bc75724e8433c34df71d5d78.jpg|'
-                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200815172434__%28%7C%29usr%403240819%402020-08-15%28%7C%29a97a2ee88342986010dd87ebb042a9be.jpg|'
-                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200906230117__%28%7C%29usr%403240819%402020-08-15%28%7C%292ae48956703c5984f5b8fa480ab5dca8.jpg|'
-                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/u_id_3240819__480x480__width_height__20200906230153__%28%7C%29usr%403240819%402020-08-15%28%7C%2960b850c08a77b98c4b6e6899888f093f.jpg',
+            self.assertEqual('https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/'
+                             'u_id_3240819__480x480__width_height__20200815171833__%28%7C%29usr%4032'
+                             '40819%402020-08-15%28%7C%290bcd9bb5ce0653afba556eb5faf17287.jpg|'
+                             
+                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/'
+                             'u_id_3240819__480x480__width_height__20200815172314__%28%7C%29usr%4032'
+                             '40819%402020-08-15%28%7C%29d011e030bc75724e8433c34df71d5d78.jpg|'
+                             
+                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/'
+                             'u_id_3240819__480x480__width_height__20200815172434__%28%7C%29usr%4032'
+                             '40819%402020-08-15%28%7C%29a97a2ee88342986010dd87ebb042a9be.jpg|'
+                             
+                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/'
+                             'u_id_3240819__480x480__width_height__20200906230117__%28%7C%29usr%4032'
+                             '40819%402020-08-15%28%7C%292ae48956703c5984f5b8fa480ab5dca8.jpg|'
+                             
+                             'https://photos.christiandatingforfree.com/thumb_cache/2020/0815/480x/'
+                             'u_id_3240819__480x480__width_height__20200906230153__%28%7C%29usr%4032'
+                             '40819%402020-08-15%28%7C%2960b850c08a77b98c4b6e6899888f093f.jpg',
+
                              profile.image_urls)
 
             self.assertEqual(LookingFor.longTermRelationship, profile.looking_for)

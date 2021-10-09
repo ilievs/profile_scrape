@@ -6,7 +6,8 @@ from scrape.profile_scrape import get_profile_links
 class TestResultPageParsing(unittest.TestCase):
 
     def test_normal_profile(self):
-        with open('com/dreamlab/profile_scrape/test/example_results_page.html', 'rt', encoding='utf-8') as f:
+        html_file_dir = '/'.join(__file__.split('/')[:-1]) + '/example_results_page.html'
+        with open(html_file_dir, 'rt', encoding='utf-8') as f:
 
             links = get_profile_links(f.read())
 
